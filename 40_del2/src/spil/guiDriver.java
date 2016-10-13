@@ -38,7 +38,7 @@ public class guiDriver {
 
 		GUI.create(felter);
 		
-		GUI.addPlayer("DANIEL", 1000);
+		GUI.addPlayer("Daniel", 1000);
 	}
 
 }

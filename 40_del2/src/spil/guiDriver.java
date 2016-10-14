@@ -27,7 +27,21 @@ public class guiDriver {
 
 		GUI.create(felter);
 
-		GUI.addPlayer("Daniel", 1000);
+		GUI.addPlayer("Player 1", 1000);
+		GUI.addPlayer("Player 2", 1000);
+
+		/* Player 1 throw */
+		GUI.showMessage("Player 1 rafle!");
+		GUI.setDice(2, 5);
+
+		/* Player 2 throw */
+		GUI.showMessage("Player 2 rafle!");
+		GUI.setDice(1, 5);
+
+		GUI.showMessage("Player 2 starter TILLYKKE MAN!!");
+
+		GUI.setDice(4, 4);
+		GUI.setCar(8, "Player 2");
 	}
 
 }

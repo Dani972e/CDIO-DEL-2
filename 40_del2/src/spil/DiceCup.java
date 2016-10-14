@@ -39,13 +39,13 @@ public class DiceCup {
 	 * Metoden shakeOneDice() bruger @param player til at kaste med én terning.
 	 * Returnere derefter resultatet af kastet som en int.
 	 * 
-	 * @param player Spiller der kaster
+	 * @param player1 Spiller der kaster
 	 * @return roll resultat af kast
 	 */
-	public int shakeOneDie(Player player) {
-		System.out.println("\n[" + player.getId() + "] " + player.getName() + " rolling...");
+	public int shakeOneDie(spil.Player player1) {
+		System.out.println("\n[" + player1.getId() + "] " + player1.getName() + " rolling...");
 		int roll = die1.roll();
-		System.out.println("[" + player.getId() + "] " + player.getName() + " got " + roll + "!");
+		System.out.println("[" + player1.getId() + "] " + player1.getName() + " got " + roll + "!");
 		return roll;
 	}
 
@@ -53,21 +53,26 @@ public class DiceCup {
 	 * Metoden shakeTwoDice() bruger @param player til at kaste med to terninger.
 	 * Returnere derefter resultatet af kastet som en int.
 	 * 
-	 * @param player Spiller der kaster
+	 * @param firstPlayer Spiller der kaster
 	 * @return roll1 + roll2 resultat af kast
 	 */
-	public int shakeTwoDice(Player player) {
-		System.out.println("[" + player.getId() + "] " + player.getName() + " rolling...");
+	public int shakeTwoDice(spil.Player firstPlayer) {
+		System.out.println("[" + firstPlayer.getId() + "] " + firstPlayer.getName() + " rolling...");
 		int roll1 = die1.roll();
 		int roll2 = die2.roll();
-		System.out.println("[" + player.getId() + "] " + player.getName() + " got " + roll1 + ", " + roll2 + "!");
-		player.addToScore(roll1 + roll2);
+		System.out.println("[" + firstPlayer.getId() + "] " + firstPlayer.getName() + " got " + roll1 + ", " + roll2 + "!");
+		firstPlayer.addToScore(roll1 + roll2);
 
 		if (roll1 == roll2) {
-			System.out.println("Wow, [" + player.getId() + "] " + player.getName() + " got an extra roll!");
-			shakeTwoDice(player);
+			System.out.println("Wow, [" + firstPlayer.getId() + "] " + firstPlayer.getName() + " got an extra roll!");
+			shakeTwoDice(firstPlayer);
 		}
 		return roll1 + roll2;
+	}
+
+	public int shakeOneDie(Player player1) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

@@ -12,7 +12,7 @@ import desktop_resources.GUI;
 
 public abstract class FieldController {
 
-	private static final int DEFAULT_BALANCE=3000;
+	private static final int DEFAULT_BALANCE=1000;
 	
 	public static void createArea(Player p1,Player p2){
 		Field[] felter = {
@@ -36,11 +36,31 @@ public abstract class FieldController {
 	
 	public static void placePlayer(Player player){
 		GUI.addPlayer(player.getName(), DEFAULT_BALANCE);
+		GUI.setCar(1, player.getName());
 	}
 	
-	public static void move(Player player,int roll1, int roll2){
-		GUI.showMessage(player.getName()+" is rolling...");
-		GUI.setCar(roll1+roll2-1, player.getName());
-		GUI.setDice(roll1, roll2);
+	public static void play(Player player1, Player player2, int[] player1roll, int[] player2roll){
+		move(player1,player1roll[0],player1roll[1]);
+		move(player2,player2roll[0],player2roll[1]);
+		GUI.showMessage("--- END OF THE TURN ---");
+		replacePlayer(player1,player1roll[0],player1roll[1]);
+		replacePlayer(player2,player2roll[0],player2roll[1]);
 	}
+	
+	private static void move(Player player,int roll1, int roll2){
+		GUI.showMessage(player.getName()+" is rolling...");
+		GUI.setDice(roll1, roll2);
+		GUI.removeCar(1, player.getName());
+		GUI.setCar(roll1+roll2-1, player.getName());
+		
+		//TODO change balance + or -
+		
+		GUI.setBalance(player.getName(), player.getBalance());
+	}
+	
+	private static void replacePlayer(Player player, int roll1, int roll2){
+		GUI.removeCar(roll1+roll2-1, player.getName());
+		GUI.setCar(1, player.getName());
+	}
+	
 }

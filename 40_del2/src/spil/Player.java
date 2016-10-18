@@ -37,4 +37,7 @@ public class Player {
 	public String getName() {
 		return name;
 	}
+	public int getBalance(){
+		return acc.getCoins();
+	}
 }

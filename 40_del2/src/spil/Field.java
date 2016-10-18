@@ -1,5 +1,7 @@
 package spil;
 
+import java.awt.Color;
+
 /**
  * @author Daniel Larsen (s151641)
  * @author Daniel Anusic (s155005)
@@ -9,7 +11,51 @@ package spil;
  */
 
 public class Field {
-	
+
 	private int id;
+	private Color bgColor;
+	private Color fgColor;
+	private String title;
+	private String subText;
+	private String desc;
+	private int coinChange;
+
+	public Field(int id, Color bgColor, Color fgColor, String title, String subText, String desc, int coinChange) {
+		this.id = id;
+		this.bgColor = bgColor;
+		this.fgColor = fgColor;
+		this.title = title;
+		this.subText = subText;
+		this.desc = desc;
+		this.coinChange = coinChange;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public Color getBgColor() {
+		return bgColor;
+	}
+
+	public Color getFgColor() {
+		return fgColor;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public String getSubText() {
+		return subText;
+	}
+
+	public String getDesc() {
+		return desc;
+	}
+
+	public int getCoinChange() {
+		return coinChange;
+	}
 
 }

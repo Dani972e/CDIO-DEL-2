@@ -1,5 +1,9 @@
 /**
- * @author Peter EL-Habr
+ * @author Peter EL-Habr (s165202
+ * @author Daniel Anusic (s155005)
+ * @author Peter El-Habr (s165202)
+ * @author Loui Southwick (s161788)
+ * @version 1.0
  */
 
 package spil;
@@ -10,9 +14,7 @@ import desktop_fields.Field;
 import desktop_fields.Street;
 import desktop_resources.GUI;
 
-public abstract class FieldController {
-
-	private static final int DEFAULT_BALANCE = 1000;
+public class FieldController {
 
 	public static void createArea(Player p1, Player p2) {
 		spil.Field[] fields = {
@@ -70,7 +72,7 @@ public abstract class FieldController {
 	}
 
 	public static void placePlayer(Player player) {
-		GUI.addPlayer(player.getName(), DEFAULT_BALANCE);
+		GUI.addPlayer(player.getName(),0);
 		GUI.setCar(12, player.getName());
 	}
 

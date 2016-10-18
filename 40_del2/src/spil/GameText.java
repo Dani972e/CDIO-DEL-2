@@ -10,6 +10,7 @@ package spil;
 
 public class GameText {
 
+	public static String[] startField = { "Start", "Home", "Home, sweet home." };
 	public static String[] field2Text = { "2", "Tower", "You enter the Tower of Hope and find 250 coins." };
 	public static String[] field3Text = { "3", "Crater", "You fall into the Goblin Crater. The goblins steal 100 coins from you." };
 	public static String[] field4Text = { "4", "Palace Gates", "You enter the King's Palace, and he gives you 100 coins." };

@@ -9,5 +9,7 @@ package spil;
  */
 
 public class Field {
+	
+	private int id;
 
 }

@@ -80,7 +80,7 @@ public abstract class FieldController {
 
 		//TODO change balance + or -
 
-		GUI.setBalance(player.getName(), player.getBalance());
+		GUI.setBalance(player.getName(), player.getCoins());
 	}
 
 	private static void replacePlayer(Player player, int roll1, int roll2) {

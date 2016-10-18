@@ -10,11 +10,6 @@ public class guiDriver {
 
 	public static void main(String[] args) {
 
-		Field[] fields = new Field[12];
-
-		spil.Field field2 = new spil.Field(2, Color.RED, Color.BLACK, "Tower", "Dark magical tower of d00m", "just kitten", -250);
-		spil.Field field3 = new spil.Field(3, Color.RED, Color.BLACK, "Tower", "Dark magical tower of d00m", "just kitten", -250);
-
 		Field[] felter = {
 				new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLACK).setTitle("2").setSubText("subtext").setDescription("desc").build(),
 				new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLACK).setTitle("3").setSubText("subtext").setDescription("desc").build(),

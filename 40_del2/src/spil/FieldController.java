@@ -9,15 +9,14 @@ import java.awt.Color;
 import desktop_fields.Field;
 import desktop_fields.Street;
 import desktop_resources.GUI;
-import test.Player;
 
 public abstract class FieldController {
 
 	private static final int DEFAULT_BALANCE=3000;
 	
-	public static void createArea(Player player1,Player player2){
+	public static void createArea(Player p1,Player p2){
 		Field[] felter = {
-				//TODO create Field objet from Field class
+				//TODO create Field object from Field class
 				new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLACK).setTitle("2").setSubText("subtext").setDescription("desc").build(),
 				new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLACK).setTitle("3").setSubText("subtext").setDescription("desc").build(),
 				new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLACK).setTitle("4").setSubText("subtext").setDescription("desc").build(),
@@ -31,17 +30,17 @@ public abstract class FieldController {
 				new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLACK).setTitle("12").setSubText("subtext").setDescription("desc").build()
 		};
 		GUI.create(felter);
-		GUI.addPlayer(player1.name, DEFAULT_BALANCE);
-		GUI.addPlayer(player2.name, DEFAULT_BALANCE);
+		FieldController.placePlayer(p1);
+		FieldController.placePlayer(p2);
 	}
 	
 	public static void placePlayer(Player player){
-		GUI.addPlayer(player.name, 3000);
+		GUI.addPlayer(player.getName(), DEFAULT_BALANCE);
 	}
 	
 	public static void move(Player player,int roll1, int roll2){
-		GUI.showMessage("Player "+player.id+" is rolling...");
-		GUI.setCar(roll1+roll2-1, player.name);
+		GUI.showMessage(player.getName()+" is rolling...");
+		GUI.setCar(roll1+roll2-1, player.getName());
 		GUI.setDice(roll1, roll2);
 	}
 }

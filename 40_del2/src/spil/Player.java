@@ -1,4 +1,4 @@
-<<<<<<<HEAD package spil;
+package spil;
 
 /**
  * @author Daniel Larsen (s151641)

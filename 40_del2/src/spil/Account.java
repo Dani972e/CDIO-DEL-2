@@ -10,4 +10,18 @@ package spil;
 
 public class Account {
 
+	private int coins = 1000;
+
+	public void addCoins(int amount) {
+		coins += amount;
+	}
+
+	public void removeCoins(int amount) {
+		coins -= amount;
+	}
+
+	public int getCoins() {
+		return coins;
+	}
+
 }

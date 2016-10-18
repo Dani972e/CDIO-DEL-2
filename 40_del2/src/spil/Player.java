@@ -10,6 +10,12 @@ package spil;
 
 public class Player {
 
-	
-	
+	private Account acc;
+	private String name;
+
+	public Player(String name) {
+		this.name = name;
+		acc = new Account();
+	}
+
 }

@@ -5,7 +5,6 @@ package spil;
  * @author Daniel Anusic (s155005)
  * @author Peter El-Habr (s165202)
  * @author Loui Southwick (s161788)
- * @author Nemanja Mitrovic (s165231)
  * @version 1.0
  */
 
@@ -17,8 +16,18 @@ public class Die {
 	 * @param MAX_FACE_VALUE Maximumsværdi for faceValue.
 	 * @param faceValue      Den side terningen ligger på efter et kast. [1;6]
 	 */
-	private final int MAX_FACE_VALUE = 6;
+	private int maxFaceValue = 6;
 	private int faceValue = 1;
+
+	/**
+	 * Die klassen kan ikke blive instantieret uden at give
+	 * en parameter i constructoren for maxFaceValue.
+	 * 
+	 * @param maxFaceValue Maximumsværdi for faceValue.
+	 */
+	public Die(int maxFaceValue) {
+		this.maxFaceValue = maxFaceValue;
+	}
 
 	/**
 	 * Giver faceValue en tilfældig værdi i intervallet [1;6]
@@ -27,7 +36,7 @@ public class Die {
 	 * @return getFaceValue()
 	 */
 	public int roll() {
-		faceValue = (int) (Math.random() * MAX_FACE_VALUE) + 1;
+		faceValue = (int) (Math.random() * maxFaceValue) + 1;
 		return getFaceValue();
 	}
 
@@ -44,6 +53,18 @@ public class Die {
 	 */
 	public int getFaceValue() {
 		return faceValue;
+	}
+
+	/**
+	 * Setter metode for variable maxFaceValue.
+	 * 
+	 * Sætter den globle variable maxFaceValue til at være 
+	 * lig parameter værdien maxFaceValue.
+	 * 
+	 * @param maxFaceValue Maximumsværdi for faceValue.
+	 */
+	public void setMaxFaceValue(int maxFaceValue) {
+		this.maxFaceValue = maxFaceValue;
 	}
 
 }

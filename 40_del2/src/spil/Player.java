@@ -12,10 +12,26 @@ public class Player {
 
 	private Account acc;
 	private String name;
+	private final int MAX_COIN_VALUE = 3000;
+	private final int MIN_COIN_VALUE = 0;
 
 	public Player(String name) {
 		this.name = name;
 		acc = new Account();
+	}
+
+	public boolean hasWon() {
+		if (acc.getCoins() >= MAX_COIN_VALUE) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean hasLost() {
+		if (acc.getCoins() <= MIN_COIN_VALUE) {
+			return true;
+		}
+		return false;
 	}
 
 }

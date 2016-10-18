@@ -13,9 +13,12 @@ import test.Player;
 
 public abstract class FieldController {
 
-	public static void createField(Player player1,Player player2){
+	private static final int DEFAULT_BALANCE=3000;
+	
+	public static void createArea(Player player1,Player player2){
 		Field[] felter = {
-				new Street.Builder().setBgColor(Color.GREEN).setFgColor(Color.BLACK).setTitle("2").setSubText("subtext").setDescription("desc").build(),
+				//TODO create Field objet from Field class
+				new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLACK).setTitle("2").setSubText("subtext").setDescription("desc").build(),
 				new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLACK).setTitle("3").setSubText("subtext").setDescription("desc").build(),
 				new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLACK).setTitle("4").setSubText("subtext").setDescription("desc").build(),
 				new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLACK).setTitle("5").setSubText("subtext").setDescription("desc").build(),
@@ -28,8 +31,8 @@ public abstract class FieldController {
 				new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLACK).setTitle("12").setSubText("subtext").setDescription("desc").build()
 		};
 		GUI.create(felter);
-		GUI.addPlayer(player1.name, 3000);
-		GUI.addPlayer(player2.name, 3000);
+		GUI.addPlayer(player1.name, DEFAULT_BALANCE);
+		GUI.addPlayer(player2.name, DEFAULT_BALANCE);
 	}
 	
 	public static void placePlayer(Player player){
@@ -38,7 +41,7 @@ public abstract class FieldController {
 	
 	public static void move(Player player,int roll1, int roll2){
 		GUI.showMessage("Player "+player.id+" is rolling...");
+		GUI.setCar(roll1+roll2-1, player.name);
 		GUI.setDice(roll1, roll2);
-		GUI.setCar(roll1+roll2, player.name);
 	}
 }

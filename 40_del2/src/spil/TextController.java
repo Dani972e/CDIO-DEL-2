@@ -10,6 +10,8 @@ package spil;
 
 public class TextController {
 
+	public static String welcomeMessage = "Welcome to the game, \"Treasure Hunt\"!";
+	
 	public static String[] startField = { "Start", "Home", "Home, sweet home." };
 	public static String[] field2Text = { "2", "Tower", "You enter the Tower of Hope and find 250 coins." };
 	public static String[] field3Text = { "3", "Crater", "You fall into the Goblin Crater. The goblins steal 100 coins from you." };

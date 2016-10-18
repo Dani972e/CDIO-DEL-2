@@ -1,27 +1,39 @@
-package spil;
+package test;
 
 import java.awt.Color;
 
 import desktop_fields.Field;
 import desktop_fields.Street;
 import desktop_resources.GUI;
+import spil.TextController;
 
 public class guiDriver {
 
 	public static void main(String[] args) {
 
 		spil.Field[] fields = {
-				new spil.Field(2, new Color(0x46B50A), new Color(0xFFFFFF), GameText.field2Text[0], GameText.field2Text[1], GameText.field2Text[2], 250),
-				new spil.Field(3, new Color(0xBA8F71), new Color(0x000000), GameText.field3Text[0], GameText.field3Text[1], GameText.field3Text[2], -100),
-				new spil.Field(4, new Color(0xAF0EA7), new Color(0x68DBFF), GameText.field4Text[0], GameText.field4Text[1], GameText.field4Text[2], 100),
-				new spil.Field(5, new Color(0x89BEFF), new Color(0x000000), GameText.field5Text[0], GameText.field5Text[1], GameText.field5Text[2], -20),
-				new spil.Field(6, new Color(0xF4E242), new Color(0x1000FF), GameText.field6Text[0], GameText.field6Text[1], GameText.field6Text[2], 180),
-				new spil.Field(7, new Color(0xFFF6B7), new Color(0x00B5AF), GameText.field7Text[0], GameText.field7Text[1], GameText.field7Text[2], 0),
-				new spil.Field(8, new Color(0x877E79), new Color(0x820707), GameText.field8Text[0], GameText.field8Text[1], GameText.field8Text[2], -70),
-				new spil.Field(9, new Color(0xFF9900), new Color(0x155B00), GameText.field9Text[0], GameText.field9Text[1], GameText.field9Text[2], 60),
-				new spil.Field(10, new Color(0xE2E2E2), new Color(0xE00000), GameText.field10Text[0], GameText.field10Text[1], GameText.field10Text[2], -80),
-				new spil.Field(11, new Color(0xC61300), new Color(0xFF7575), GameText.field11Text[0], GameText.field11Text[1], GameText.field11Text[2], -50),
-				new spil.Field(12, new Color(0xFFD700), new Color(0xCC7000), GameText.field12Text[0], GameText.field12Text[1], GameText.field12Text[2], 650), };
+				new spil.Field(new Color(0x46B50A), new Color(0xFFFFFF), TextController.field2Text[0], TextController.field2Text[1],
+						TextController.field2Text[2], 250),
+				new spil.Field(new Color(0xBA8F71), new Color(0x000000), TextController.field3Text[0], TextController.field3Text[1],
+						TextController.field3Text[2], -100),
+				new spil.Field(new Color(0xAF0EA7), new Color(0x68DBFF), TextController.field4Text[0], TextController.field4Text[1],
+						TextController.field4Text[2], 100),
+				new spil.Field(new Color(0x89BEFF), new Color(0x000000), TextController.field5Text[0], TextController.field5Text[1],
+						TextController.field5Text[2], -20),
+				new spil.Field(new Color(0xF4E242), new Color(0x1000FF), TextController.field6Text[0], TextController.field6Text[1],
+						TextController.field6Text[2], 180),
+				new spil.Field(new Color(0xFFF6B7), new Color(0x00B5AF), TextController.field7Text[0], TextController.field7Text[1],
+						TextController.field7Text[2], 0),
+				new spil.Field(new Color(0x877E79), new Color(0x820707), TextController.field8Text[0], TextController.field8Text[1],
+						TextController.field8Text[2], -70),
+				new spil.Field(new Color(0xFF9900), new Color(0x155B00), TextController.field9Text[0], TextController.field9Text[1],
+						TextController.field9Text[2], 60),
+				new spil.Field(new Color(0xE2E2E2), new Color(0xE00000), TextController.field10Text[0], TextController.field10Text[1],
+						TextController.field10Text[2], -80),
+				new spil.Field(new Color(0xC61300), new Color(0xFF7575), TextController.field11Text[0], TextController.field11Text[1],
+						TextController.field11Text[2], -50),
+				new spil.Field(new Color(0xFFD700), new Color(0xCC7000), TextController.field12Text[0], TextController.field12Text[1],
+						TextController.field12Text[2], 650), };
 
 		Field[] guiFields = {
 				new Street.Builder().setBgColor(fields[0].getBgColor()).setFgColor(fields[0].getFgColor()).setTitle(fields[0].getTitle())

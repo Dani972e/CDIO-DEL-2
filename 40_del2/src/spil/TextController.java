@@ -8,7 +8,7 @@ package spil;
  * @version 1.0
  */
 
-public class GameText {
+public class TextController {
 
 	public static String[] startField = { "Start", "Home", "Home, sweet home." };
 	public static String[] field2Text = { "2", "Tower", "You enter the Tower of Hope and find 250 coins." };

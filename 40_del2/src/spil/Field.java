@@ -12,7 +12,6 @@ import java.awt.Color;
 
 public class Field {
 
-	private int id;
 	private Color bgColor;
 	private Color fgColor;
 	private String title;
@@ -20,18 +19,13 @@ public class Field {
 	private String desc;
 	private int coinChange;
 
-	public Field(int id, Color bgColor, Color fgColor, String title, String subText, String desc, int coinChange) {
-		this.id = id;
+	public Field(Color bgColor, Color fgColor, String title, String subText, String desc, int coinChange) {
 		this.bgColor = bgColor;
 		this.fgColor = fgColor;
 		this.title = title;
 		this.subText = subText;
 		this.desc = desc;
 		this.coinChange = coinChange;
-	}
-
-	public int getId() {
-		return id;
 	}
 
 	public Color getBgColor() {

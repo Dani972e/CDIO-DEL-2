@@ -10,10 +10,10 @@ package spil;
 
 public class Player {
 
-	private Account acc;
 	private String name;
 	private final int MAX_COIN_VALUE = 3000;
 	private final int MIN_COIN_VALUE = 0;
+	private Account acc;
 
 	public Player(String name) {
 		this.name = name;
@@ -37,7 +37,9 @@ public class Player {
 	public String getName() {
 		return name;
 	}
-	public int getBalance(){
+
+	public int getCoins() {
 		return acc.getCoins();
 	}
+
 }

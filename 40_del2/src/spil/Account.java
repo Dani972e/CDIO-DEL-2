@@ -16,10 +16,6 @@ public class Account {
 		coins += amount;
 	}
 
-	public void removeCoins(int amount) {
-		coins -= amount;
-	}
-
 	public int getCoins() {
 		return coins;
 	}

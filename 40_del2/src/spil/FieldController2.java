@@ -9,22 +9,22 @@ import desktop_resources.GUI;
 public abstract class FieldController2 {
 
 	private static final spil.Field[] fields = {
-			new spil.Field(new Color(0x46B50A), new Color(0xFFFFFF), TextController.field2Text[0], TextController.field2Text[1],
-					TextController.field2Text[2], 250),
-			new spil.Field(new Color(0xBA8F71), new Color(0x000000), TextController.field3Text[0], TextController.field3Text[1],
-					TextController.field3Text[2], -100),
-			new spil.Field(new Color(0xAF0EA7), new Color(0x68DBFF), TextController.field4Text[0], TextController.field4Text[1],
-					TextController.field4Text[2], 100),
-			new spil.Field(new Color(0x89BEFF), new Color(0x000000), TextController.field5Text[0], TextController.field5Text[1],
-					TextController.field5Text[2], -20),
-			new spil.Field(new Color(0xF4E242), new Color(0x1000FF), TextController.field6Text[0], TextController.field6Text[1],
-					TextController.field6Text[2], 180),
-			new spil.Field(new Color(0xFFF6B7), new Color(0x00B5AF), TextController.field7Text[0], TextController.field7Text[1],
-					TextController.field7Text[2], 0),
-			new spil.Field(new Color(0x877E79), new Color(0x820707), TextController.field8Text[0], TextController.field8Text[1],
-					TextController.field8Text[2], -70),
-			new spil.Field(new Color(0xFF9900), new Color(0x155B00), TextController.field9Text[0], TextController.field9Text[1],
-					TextController.field9Text[2], 60),
+			new spil.Field(new Color(0x46B50A), new Color(0xFFFFFF), TextController.field2Text[0], TextController.field2Text[1], TextController.field2Text[2],
+					250),
+			new spil.Field(new Color(0xBA8F71), new Color(0x000000), TextController.field3Text[0], TextController.field3Text[1], TextController.field3Text[2],
+					-100),
+			new spil.Field(new Color(0xAF0EA7), new Color(0x68DBFF), TextController.field4Text[0], TextController.field4Text[1], TextController.field4Text[2],
+					100),
+			new spil.Field(new Color(0x89BEFF), new Color(0x000000), TextController.field5Text[0], TextController.field5Text[1], TextController.field5Text[2],
+					-20),
+			new spil.Field(new Color(0xF4E242), new Color(0x1000FF), TextController.field6Text[0], TextController.field6Text[1], TextController.field6Text[2],
+					180),
+			new spil.Field(new Color(0xFFF6B7), new Color(0x00B5AF), TextController.field7Text[0], TextController.field7Text[1], TextController.field7Text[2],
+					0),
+			new spil.Field(new Color(0x877E79), new Color(0x820707), TextController.field8Text[0], TextController.field8Text[1], TextController.field8Text[2],
+					-70),
+			new spil.Field(new Color(0xFF9900), new Color(0x155B00), TextController.field9Text[0], TextController.field9Text[1], TextController.field9Text[2],
+					60),
 			new spil.Field(new Color(0xE2E2E2), new Color(0xE00000), TextController.field10Text[0], TextController.field10Text[1],
 					TextController.field10Text[2], -80),
 			new spil.Field(new Color(0xC61300), new Color(0xFF7575), TextController.field11Text[0], TextController.field11Text[1],
@@ -55,19 +55,18 @@ public abstract class FieldController2 {
 					.setSubText(fields[9].getSubText()).setDescription(fields[9].getDesc()).build(),
 			new Street.Builder().setBgColor(fields[10].getBgColor()).setFgColor(fields[10].getFgColor()).setTitle(fields[10].getTitle())
 					.setSubText(fields[10].getSubText()).setDescription(fields[10].getDesc()).build(),
-			new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLUE).setTitle(TextController.startField[0])
-					.setSubText(TextController.startField[1]).setDescription(TextController.startField[2]).build(), };
+			new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLUE).setTitle(TextController.startField[0]).setSubText(TextController.startField[1])
+					.setDescription(TextController.startField[2]).build(), };
 
 	public static void initFields() {
 		GUI.create(guiFields);
 	}
-	
+
 	public static void addPlayer(Player player) {
 		GUI.addPlayer(player.getName(), player.getCoins());
 	}
 
 	public static void placePlayer(Player player, int fieldNum) {
-		GUI.addPlayer(player.getName(), player.getCoins());
 		GUI.setCar(fieldNum, player.getName());
 	}
 

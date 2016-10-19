@@ -45,7 +45,5 @@ public class Player {
 	public void addCoins(int amount){
 		acc.addCoins(amount);
 	}
-	
-	//TODO Make a Super Class ?
 
 }

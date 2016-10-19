@@ -24,4 +24,9 @@ public class TextController {
 	public static String[] field10Text = { "10", "The Werewall", "While being chased by a werewolf, you drop 80 coins." };
 	public static String[] field11Text = { "11", "The Pit", "You got knocked unconscious and lost 50 coins." };
 	public static String[] field12Text = { "12", "Goldmine", "You find a mine full of gold, worth 650 coins." };
+	
+	public static String showDiceResult(Player player, int faceValue1, int faceValue2) {
+		return player.getName() + " rolled " + faceValue1 + " and " + faceValue2 + "!";
+	}
+	
 }

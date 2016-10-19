@@ -41,5 +41,11 @@ public class Player {
 	public int getCoins() {
 		return acc.getCoins();
 	}
+	
+	public void addCoins(int amount){
+		acc.addCoins(amount);
+	}
+	
+	//TODO Make a Super Class ?
 
 }

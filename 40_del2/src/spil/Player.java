@@ -1,5 +1,7 @@
 package spil;
 
+import desktop_resources.GUI;
+
 /**
  * @author Daniel Larsen (s151641)
  * @author Daniel Anusic (s155005)
@@ -22,6 +24,7 @@ public class Player {
 
 	public boolean hasWon() {
 		if (acc.getCoins() >= MAX_COIN_VALUE) {
+			GUI.showMessage(TextController.winMessage(this));
 			return true;
 		}
 		return false;
@@ -29,6 +32,7 @@ public class Player {
 
 	public boolean hasLost() {
 		if (acc.getCoins() <= MIN_COIN_VALUE) {
+			GUI.showMessage(TextController.lossMessage(this));
 			return true;
 		}
 		return false;

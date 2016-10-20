@@ -1,5 +1,7 @@
 package spil;
 
+import desktop_resources.GUI;
+
 /**
  * @author Daniel Larsen (s151641)
  * @author Daniel Anusic (s155005)
@@ -12,14 +14,31 @@ public class TextController {
 
 	public static String welcomeMessage = "Welcome to the game, \"Treasure Hunt\"!";
 
-	public static String[][] fieldText = { { "Start", "Home", "Home, sweet home." }, { "2", "Tower", "You enter the Tower of Hope and find 250 coins." },
+	public static String introMessage() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("In this game, two players will compete against each other.\n\n");
+		sb.append("They will start out rolling once each, the player that rolls higher, will start the actual game.\n\n");
+		sb.append("Enjoy!");
+		return sb.toString();
+	}
+
+	public static String[][] fieldText = { { "Start", "Home", "Home, sweet home." },
+			{ "2", "Tower", "You enter the Tower of Hope and find 250 coins." },
 			{ "3", "Crater", "You fall into the Goblin Crater. The goblins steal 100 coins from you." },
 			{ "4", "Palace Gates", "You enter the King's Palace, and he gives you 100 coins." },
 			{ "5", "Cold Desert", "You accidentally drop 20 coins in the desert." },
 			{ "6", "Walled City", "It's your lucky day, 180 extra coins magically appear in your pocket." },
 			{ "7", "Monastery", "It's time for some praying." }, { "8", "Black Cave", "You got robbed by trolls and lost 70 coins." },
-			{ "9", "Huts in the mountain", "You find 60 coins in the hut." }, { "10", "The Werewall", "While being chased by a werewolf, you drop 80 coins." },
-			{ "11", "The Pit", "You got knocked unconscious and lost 50 coins." }, { "12", "Goldmine", "You find a mine full of gold, worth 650 coins." }, };
+			{ "9", "Huts in the mountain", "You find 60 coins in the hut." },
+			{ "10", "The Werewall", "While being chased by a werewolf, you drop 80 coins." },
+			{ "11", "The Pit", "You got knocked unconscious and lost 50 coins." },
+			{ "12", "Goldmine", "You find a mine full of gold, worth 650 coins." }, };
+
+	public static String throwDiceResult(Player player, int roll1, int roll2) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(player.getName() + " got " + roll1 + " and " + roll2 + "!\n\n");
+		return sb.toString();
+	}
 
 	public static String showDiceResult(Player player, int roll1, int roll2) {
 		StringBuilder sb = new StringBuilder();
@@ -29,16 +48,23 @@ public class TextController {
 		return sb.toString();
 	}
 
-	public static String introMessage() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("In this game, two players will compete against each other.\n\n");
-		sb.append("They will start out rolling once each, the player that rolls higher, will start the actual game.\n\n");
-		sb.append("Enjoy!");
-		return sb.toString();
-	}
-
 	public static String rollMessage(Player player) {
 		return player.getName() + " rolling next!";
 	}
 
+	public static String startMessage(Player player) {
+		return "Congratulations " + player.getName() + " you will start";
+	}
+
+	public static String winMessage(Player player) {
+		return "Congratulation " + player.getName() + " you won the game of \"Treasure Hunt\"!";
+	}
+
+	public static String lossMessage(Player player) {
+		return "Too bad " + player.getName() + " you lost the game of \"Treasure Hunt\"!";
+	}
+
+	public static String extraTurnMessage(Player player) {
+		return player.getName() + " you got an extra turn";
+	}
 }

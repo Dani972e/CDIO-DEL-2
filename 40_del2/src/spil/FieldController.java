@@ -15,7 +15,7 @@ import desktop_fields.Field;
 import desktop_fields.Street;
 import desktop_resources.GUI;
 
-public class FieldController {
+public abstract class FieldController {
 	
 	private static final spil.Field[] fields = {
 			new spil.Field(new Color(0x46B50A), new Color(0xFFFFFF), TextController.field2Text[0], TextController.field2Text[1],
@@ -72,19 +72,32 @@ public class FieldController {
 		GUI.create(guiFields);
 		FieldController.placePlayer(p1);
 		FieldController.placePlayer(p2);
+		
+		GUI.showMessage(TextController.welcomeMessage);
 	}
 
 	private static void placePlayer(Player player) {
 		GUI.addPlayer(player.getName(),player.getCoins());
 		GUI.setCar(12, player.getName());
 	}
+	
 
 	public static void play(Player player1, Player player2, int[] player1roll, int[] player2roll) {
-		move(player1, player1roll[0], player1roll[1]);
-		move(player2, player2roll[0], player2roll[1]);
+		
+		for (int i=0; i+1 <= player1roll.length; i+=2)
+			move(player1, player1roll[i], player1roll[i+1]);
+		
+		for (int n=0; n+1 <= player2roll.length; n+=2)
+			move(player2, player2roll[n], player2roll[n+1]);
+		
 		GUI.showMessage("--- END OF THE TURN ---");
-		replacePlayer(player1, player1roll[0], player1roll[1]);
-		replacePlayer(player2, player2roll[0], player2roll[1]);
+		
+		for (int i=0; i+1 <= player1roll.length; i+=2)
+			replacePlayer(player1, player1roll[i], player1roll[i+1]);
+		
+		for (int n=0;  n+1 <= player2roll.length; n+=2)
+			replacePlayer(player2, player2roll[n], player2roll[n+1]);
+	
 	}
 
 	private static void move(Player player, int roll1, int roll2) {

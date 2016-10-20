@@ -6,8 +6,16 @@ import desktop_fields.Field;
 import desktop_fields.Street;
 import desktop_resources.GUI;
 
+/**
+ * @author Daniel Larsen (s151641)
+ * @author Daniel Anusic (s155005)
+ * @author Peter El-Habr (s165202)
+ * @author Loui Southwick (s161788)
+ * @version 1.0
+ */
+
 public class FieldController2 {
-	
+
 	private TextController textController = new TextController();
 
 	private final spil.Field[] fields = {
@@ -16,7 +24,7 @@ public class FieldController2 {
 			new spil.Field(new Color(0xBA8F71), new Color(0x000000), textController.fieldText[2][0], textController.fieldText[2][1],
 					textController.fieldText[2][2], -100),
 			new spil.Field(new Color(0xAF0EA7), new Color(0x68DBFF), textController.fieldText[3][0], textController.fieldText[3][1],
-				textController.fieldText[3][2], 100),
+					textController.fieldText[3][2], 100),
 			new spil.Field(new Color(0x89BEFF), new Color(0x000000), textController.fieldText[4][0], textController.fieldText[4][1],
 					textController.fieldText[4][2], -20),
 			new spil.Field(new Color(0xF4E242), new Color(0x1000FF), textController.fieldText[5][0], textController.fieldText[5][1],
@@ -59,7 +67,7 @@ public class FieldController2 {
 					.setSubText(fields[10].getSubText()).setDescription(fields[10].getDesc()).build(),
 			new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLUE).setTitle(textController.fieldText[0][0])
 					.setSubText(textController.fieldText[0][1]).setDescription(textController.fieldText[0][2]).build(), };
-	
+
 	public void initFields() {
 		GUI.create(guiFields);
 	}

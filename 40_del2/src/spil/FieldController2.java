@@ -6,33 +6,35 @@ import desktop_fields.Field;
 import desktop_fields.Street;
 import desktop_resources.GUI;
 
-public abstract class FieldController2 {
+public class FieldController2 {
+	
+	private TextController textController;
 
-	private static final spil.Field[] fields = {
-			new spil.Field(new Color(0x46B50A), new Color(0xFFFFFF), TextController.fieldText[1][0], TextController.fieldText[1][1],
-					TextController.fieldText[1][2], 250),
-			new spil.Field(new Color(0xBA8F71), new Color(0x000000), TextController.fieldText[2][0], TextController.fieldText[2][1],
-					TextController.fieldText[2][2], -100),
-			new spil.Field(new Color(0xAF0EA7), new Color(0x68DBFF), TextController.fieldText[3][0], TextController.fieldText[3][1],
-					TextController.fieldText[3][2], 100),
-			new spil.Field(new Color(0x89BEFF), new Color(0x000000), TextController.fieldText[4][0], TextController.fieldText[4][1],
-					TextController.fieldText[4][2], -20),
-			new spil.Field(new Color(0xF4E242), new Color(0x1000FF), TextController.fieldText[5][0], TextController.fieldText[5][1],
-					TextController.fieldText[5][2], 180),
-			new spil.Field(new Color(0xFFF6B7), new Color(0x00B5AF), TextController.fieldText[6][0], TextController.fieldText[6][1],
-					TextController.fieldText[6][2], 0),
-			new spil.Field(new Color(0x877E79), new Color(0x820707), TextController.fieldText[7][0], TextController.fieldText[7][1],
-					TextController.fieldText[7][2], -70),
-			new spil.Field(new Color(0xFF9900), new Color(0x155B00), TextController.fieldText[8][0], TextController.fieldText[8][1],
-					TextController.fieldText[8][2], 60),
-			new spil.Field(new Color(0xE2E2E2), new Color(0xE00000), TextController.fieldText[9][0], TextController.fieldText[9][1],
-					TextController.fieldText[9][2], -80),
-			new spil.Field(new Color(0xC61300), new Color(0xFF7575), TextController.fieldText[10][0], TextController.fieldText[10][1],
-					TextController.fieldText[10][2], -50),
-			new spil.Field(new Color(0xFFD700), new Color(0xCC7000), TextController.fieldText[11][0], TextController.fieldText[11][1],
-					TextController.fieldText[11][2], 650), };
+	private final spil.Field[] fields = {
+			new spil.Field(new Color(0x46B50A), new Color(0xFFFFFF), textController.fieldText[1][0], textController.fieldText[1][1],
+					textController.fieldText[1][2], 250),
+			new spil.Field(new Color(0xBA8F71), new Color(0x000000), textController.fieldText[2][0], textController.fieldText[2][1],
+					textController.fieldText[2][2], -100),
+			new spil.Field(new Color(0xAF0EA7), new Color(0x68DBFF), textController.fieldText[3][0], textController.fieldText[3][1],
+				textController.fieldText[3][2], 100),
+			new spil.Field(new Color(0x89BEFF), new Color(0x000000), textController.fieldText[4][0], textController.fieldText[4][1],
+					textController.fieldText[4][2], -20),
+			new spil.Field(new Color(0xF4E242), new Color(0x1000FF), textController.fieldText[5][0], textController.fieldText[5][1],
+					textController.fieldText[5][2], 180),
+			new spil.Field(new Color(0xFFF6B7), new Color(0x00B5AF), textController.fieldText[6][0], textController.fieldText[6][1],
+					textController.fieldText[6][2], 0),
+			new spil.Field(new Color(0x877E79), new Color(0x820707), textController.fieldText[7][0], textController.fieldText[7][1],
+					textController.fieldText[7][2], -70),
+			new spil.Field(new Color(0xFF9900), new Color(0x155B00), textController.fieldText[8][0], textController.fieldText[8][1],
+					textController.fieldText[8][2], 60),
+			new spil.Field(new Color(0xE2E2E2), new Color(0xE00000), textController.fieldText[9][0], textController.fieldText[9][1],
+					textController.fieldText[9][2], -80),
+			new spil.Field(new Color(0xC61300), new Color(0xFF7575), textController.fieldText[10][0], textController.fieldText[10][1],
+					textController.fieldText[10][2], -50),
+			new spil.Field(new Color(0xFFD700), new Color(0xCC7000), textController.fieldText[11][0], textController.fieldText[11][1],
+					textController.fieldText[11][2], 650), };
 
-	private static final Field[] guiFields = {
+	private final Field[] guiFields = {
 			new Street.Builder().setBgColor(fields[0].getBgColor()).setFgColor(fields[0].getFgColor()).setTitle(fields[0].getTitle())
 					.setSubText(fields[0].getSubText()).setDescription(fields[0].getDesc()).build(),
 			new Street.Builder().setBgColor(fields[1].getBgColor()).setFgColor(fields[1].getFgColor()).setTitle(fields[1].getTitle())
@@ -55,34 +57,38 @@ public abstract class FieldController2 {
 					.setSubText(fields[9].getSubText()).setDescription(fields[9].getDesc()).build(),
 			new Street.Builder().setBgColor(fields[10].getBgColor()).setFgColor(fields[10].getFgColor()).setTitle(fields[10].getTitle())
 					.setSubText(fields[10].getSubText()).setDescription(fields[10].getDesc()).build(),
-			new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLUE).setTitle(TextController.fieldText[0][0])
-					.setSubText(TextController.fieldText[0][1]).setDescription(TextController.fieldText[0][2]).build(), };
+			new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLUE).setTitle(textController.fieldText[0][0])
+					.setSubText(textController.fieldText[0][1]).setDescription(textController.fieldText[0][2]).build(), };
 
-	public static void initFields() {
+	public FieldController2() {
+		textController = new TextController();
+	}
+	
+	public void initFields() {
 		GUI.create(guiFields);
 	}
 
-	public static void addPlayer(Player player) {
+	public void addPlayer(Player player) {
 		GUI.addPlayer(player.getName(), player.getCoins());
 	}
 
-	public static void placePlayer(Player player, int fieldNum) {
+	public void placePlayer(Player player, int fieldNum) {
 		GUI.setCar(fieldNum, player.getName());
 	}
 
-	public static void resetPlayers(Player... playerArray) {
+	public void resetPlayers(Player... playerArray) {
 		for (int i = 0, n = playerArray.length; i < n; i++) {
 			GUI.removeAllCars(playerArray[i].getName());
 			placePlayer(playerArray[i], 12);
 		}
 	}
 
-	public static int getFieldEffect(int roll1, int roll2) {
+	public int getFieldEffect(int roll1, int roll2) {
 		int rollSum = (roll1 + roll2) - 2;
 		return fields[rollSum].getCoinChange();
 	}
 
-	public static void updatePlayer(Player player) {
+	public void updatePlayer(Player player) {
 		GUI.setBalance(player.getName(), player.getCoins());
 	}
 

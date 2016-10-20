@@ -10,35 +10,40 @@ public class GameController {
 	private Die die1;
 	private Die die2;
 
+	private FieldController2 fieldController;
+	private TextController textController;
+
 	public GameController() {
 		player1 = new Player("Player 1");
 		player2 = new Player("Player 2");
 		die1 = new Die(6);
 		die2 = new Die(6);
+		fieldController = new FieldController2();
+		textController = new TextController();
 
 		initGame();
 	}
 
 	private void initGame() {
-		FieldController2.initFields();
+		fieldController.initFields();
 
-		FieldController2.addPlayer(player1);
-		FieldController2.addPlayer(player2);
+		fieldController.addPlayer(player1);
+		fieldController.addPlayer(player2);
 
-		GUI.showMessage(TextController.welcomeMessage);
-		GUI.showMessage(TextController.introMessage());
+		GUI.showMessage(textController.welcomeMessage);
+		GUI.showMessage(textController.introMessage());
 
-		FieldController2.resetPlayers(player1, player2);
+		fieldController.resetPlayers(player1, player2);
 
 		int player1Roll = throwDice(player1);
 		int player2Roll = throwDice(player2);
 
 		do {
 			if (player1Roll > player2Roll) {
-				GUI.showMessage(TextController.startMessage(player1));
+				GUI.showMessage(textController.startMessage(player1));
 				playGame(player1, player2);
 			} else if (player2Roll > player1Roll) {
-				GUI.showMessage(TextController.startMessage(player2));
+				GUI.showMessage(textController.startMessage(player2));
 				playGame(player2, player1);
 			}
 		} while (player1Roll == player2Roll);
@@ -57,7 +62,7 @@ public class GameController {
 			if (lastPlayer.hasWon() || lastPlayer.hasLost())
 				break;
 
-			FieldController2.resetPlayers(firstPlayer, lastPlayer);
+			fieldController.resetPlayers(firstPlayer, lastPlayer);
 		}
 
 	}
@@ -67,7 +72,7 @@ public class GameController {
 		int roll2 = die2.roll();
 
 		GUI.setDice(roll1, roll2);
-		GUI.showMessage(TextController.throwDiceResult(player, roll1, roll2));
+		GUI.showMessage(textController.throwDiceResult(player, roll1, roll2));
 
 		return roll1 + roll2;
 	}
@@ -76,20 +81,20 @@ public class GameController {
 		int roll1 = die1.roll();
 		int roll2 = die2.roll();
 
-		GUI.showMessage(TextController.rollMessage(player));
+		GUI.showMessage(textController.rollMessage(player));
 
-		player.addCoins(FieldController2.getFieldEffect(roll1, roll2));
-		FieldController2.updatePlayer(player);
+		player.addCoins(fieldController.getFieldEffect(roll1, roll2));
+		fieldController.updatePlayer(player);
 
 		GUI.setDice(roll1, roll2);
 
-		FieldController2.placePlayer(player, (roll1 + roll2) - 1);
+		fieldController.placePlayer(player, (roll1 + roll2) - 1);
 		GUI.removeCar(12, player.getName());
 
-		GUI.showMessage(TextController.showDiceResult(player, roll1, roll2));
+		GUI.showMessage(textController.showDiceResult(player, roll1, roll2));
 
 		if (roll1 + roll2 == 10) {
-			GUI.showMessage(TextController.extraTurnMessage(player));
+			GUI.showMessage(textController.extraTurnMessage(player));
 			playTurn(player);
 		}
 	}

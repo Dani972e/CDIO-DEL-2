@@ -16,15 +16,17 @@ public class Player {
 	private final int MAX_COIN_VALUE = 3000;
 	private final int MIN_COIN_VALUE = 0;
 	private Account acc;
+	private TextController textController;
 
 	public Player(String name) {
 		this.name = name;
 		acc = new Account();
+		textController = new TextController();
 	}
 
 	public boolean hasWon() {
 		if (acc.getCoins() >= MAX_COIN_VALUE) {
-			GUI.showMessage(TextController.winMessage(this));
+			GUI.showMessage(textController.winMessage(this));
 			return true;
 		}
 		return false;
@@ -32,7 +34,7 @@ public class Player {
 
 	public boolean hasLost() {
 		if (acc.getCoins() <= MIN_COIN_VALUE) {
-			GUI.showMessage(TextController.lossMessage(this));
+			GUI.showMessage(textController.lossMessage(this));
 			return true;
 		}
 		return false;

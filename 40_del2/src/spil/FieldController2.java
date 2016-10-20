@@ -8,7 +8,7 @@ import desktop_resources.GUI;
 
 public class FieldController2 {
 	
-	private TextController textController;
+	private TextController textController = new TextController();
 
 	private final spil.Field[] fields = {
 			new spil.Field(new Color(0x46B50A), new Color(0xFFFFFF), textController.fieldText[1][0], textController.fieldText[1][1],
@@ -59,10 +59,6 @@ public class FieldController2 {
 					.setSubText(fields[10].getSubText()).setDescription(fields[10].getDesc()).build(),
 			new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLUE).setTitle(textController.fieldText[0][0])
 					.setSubText(textController.fieldText[0][1]).setDescription(textController.fieldText[0][2]).build(), };
-
-	public FieldController2() {
-		textController = new TextController();
-	}
 	
 	public void initFields() {
 		GUI.create(guiFields);

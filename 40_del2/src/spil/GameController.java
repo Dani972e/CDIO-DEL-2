@@ -35,10 +35,13 @@ public class GameController {
 
 		fieldController.resetPlayers(player1, player2);
 
-		int player1Roll = throwDice(player1);
-		int player2Roll = throwDice(player2);
+		int player1Roll;
+		int player2Roll;
 
 		do {
+			player1Roll = throwDice(player1);
+			player2Roll = throwDice(player2);
+
 			if (player1Roll > player2Roll) {
 				GUI.showMessage(textController.startMessage(player1));
 				playGame(player1, player2);

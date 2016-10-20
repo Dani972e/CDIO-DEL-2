@@ -17,8 +17,7 @@ public class GameController {
 		die2 = new Die(6);
 
 		initGame();
-		/* Temporary */
-		testGame();
+		playGame();
 	}
 
 	private void initGame() {
@@ -30,28 +29,41 @@ public class GameController {
 		GUI.showMessage(TextController.welcomeMessage);
 		GUI.showMessage(TextController.introMessage());
 
-		FieldController2.placePlayer(player1, 12);
-		FieldController2.placePlayer(player2, 12);
+		FieldController2.resetPlayers(player1, player2);
 	}
 
-	private void play(Player player) {
+	private void playGame() {
+		while (true) {
+			playTurn(player1);
+
+			if (player1.hasWon() || player1.hasLost())
+				break;
+
+			playTurn(player2);
+
+			if (player2.hasWon() || player2.hasLost())
+				break;
+
+			FieldController2.resetPlayers(player1, player2);
+		}
+
+	}
+
+	private void playTurn(Player player) {
 		int roll1 = die1.roll();
 		int roll2 = die2.roll();
 
 		GUI.showMessage(TextController.rollMessage(player));
+
+		player.addCoins(FieldController2.getFieldEffect(roll1, roll2));
+		FieldController2.updatePlayer(player);
+
 		GUI.setDice(roll1, roll2);
+
 		FieldController2.placePlayer(player, (roll1 + roll2) - 1);
+		GUI.removeCar(12, player.getName());
+
 		GUI.showMessage(TextController.showDiceResult(player, roll1, roll2));
-	}
-
-	/* Temporary */
-	public void testGame() {
-		play(player1);
-	}
-
-	/* Temporary */
-	public static void main(String[] args) {
-		new GameController();
 	}
 
 }

@@ -12,21 +12,21 @@ public class TextController {
 
 	public static String welcomeMessage = "Welcome to the game, \"Treasure Hunt\"!";
 
-	public static String[] startField = { "Start", "Home", "Home, sweet home." };
-	public static String[] field2Text = { "2", "Tower", "You enter the Tower of Hope and find 250 coins." };
-	public static String[] field3Text = { "3", "Crater", "You fall into the Goblin Crater. The goblins steal 100 coins from you." };
-	public static String[] field4Text = { "4", "Palace Gates", "You enter the King's Palace, and he gives you 100 coins." };
-	public static String[] field5Text = { "5", "Cold Desert", "You accidentally drop 20 coins in the desert." };
-	public static String[] field6Text = { "6", "Walled City", "It's your lucky day, 180 extra coins magically appear in your pocket." };
-	public static String[] field7Text = { "7", "Monastery", "It's time for some praying." };
-	public static String[] field8Text = { "8", "Black Cave", "You got robbed by trolls and lost 70 coins." };
-	public static String[] field9Text = { "9", "Huts in the mountain", "You find 60 coins in the hut." };
-	public static String[] field10Text = { "10", "The Werewall", "While being chased by a werewolf, you drop 80 coins." };
-	public static String[] field11Text = { "11", "The Pit", "You got knocked unconscious and lost 50 coins." };
-	public static String[] field12Text = { "12", "Goldmine", "You find a mine full of gold, worth 650 coins." };
+	public static String[][] fieldText = { { "Start", "Home", "Home, sweet home." }, { "2", "Tower", "You enter the Tower of Hope and find 250 coins." },
+			{ "3", "Crater", "You fall into the Goblin Crater. The goblins steal 100 coins from you." },
+			{ "4", "Palace Gates", "You enter the King's Palace, and he gives you 100 coins." },
+			{ "5", "Cold Desert", "You accidentally drop 20 coins in the desert." },
+			{ "6", "Walled City", "It's your lucky day, 180 extra coins magically appear in your pocket." },
+			{ "7", "Monastery", "It's time for some praying." }, { "8", "Black Cave", "You got robbed by trolls and lost 70 coins." },
+			{ "9", "Huts in the mountain", "You find 60 coins in the hut." }, { "10", "The Werewall", "While being chased by a werewolf, you drop 80 coins." },
+			{ "11", "The Pit", "You got knocked unconscious and lost 50 coins." }, { "12", "Goldmine", "You find a mine full of gold, worth 650 coins." }, };
 
-	public static String showDiceResult(Player player, int faceValue1, int faceValue2) {
-		return player.getName() + " got " + faceValue1 + " and " + faceValue2 + "!";
+	public static String showDiceResult(Player player, int roll1, int roll2) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(player.getName() + " got " + roll1 + " and " + roll2 + "!\n\n");
+		sb.append(player.getName() + " lands on " + fieldText[roll1 + roll2 - 1][1] + "!\n\n");
+		sb.append("\"" + fieldText[roll1 + roll2 - 1][2] + "\"");
+		return sb.toString();
 	}
 
 	public static String introMessage() {

@@ -81,9 +81,11 @@ public class FieldController2 {
 	}
 
 	public void resetPlayers(Player... playerArray) {
-		for (int i = 0, n = playerArray.length; i < n; i++) {
-			GUI.removeAllCars(playerArray[i].getName());
-			placePlayer(playerArray[i], 12);
+		if (playerArray.length != 0) {
+			for (int i = 0, n = playerArray.length; i < n; i++) {
+				GUI.removeAllCars(playerArray[i].getName());
+				placePlayer(playerArray[i], 12);
+			}
 		}
 	}
 

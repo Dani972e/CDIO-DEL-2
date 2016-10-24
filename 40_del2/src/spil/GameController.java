@@ -21,10 +21,6 @@ public class GameController {
 	private GameBoard gameBoard;
 	private TextBoundary textBoundary;
 
-	/* Gør det robust her. Brug f.eks et array, eller en ArrayList til at
-	 * gøre det mere robust for player og dice. Brug konstruktøren til at gøre dette med
-	 * ints f.eks
-	 */
 	public GameController() {
 		player1 = new Player("Player 1");
 		player2 = new Player("Player 2");
@@ -67,13 +63,14 @@ public class GameController {
 
 			resetGame();
 
-			// TextBoundary
+			// TextBoundary. Sæt teksten ind i tekst boundary.
 			playAgain = GUI.getUserButtonPressed("Do you want to play again?", "Yes", "No");
 
 		} while (playAgain.equals("Yes"));
 
 		System.exit(0);
 	}
+
 	private void resetGame() {
 		gameBoard.resetPlayers(player1, player2);
 		player1.resetAccount();
@@ -84,11 +81,12 @@ public class GameController {
 
 	private void playGame(Player firstPlayer, Player lastPlayer) {
 
+		/* Revise this */
 		while (true) {
 			if (!playTurn(firstPlayer)) {
 				break;
 			}
-			
+
 			if (!playTurn(lastPlayer)) {
 				break;
 			}
@@ -117,8 +115,8 @@ public class GameController {
 
 		GUI.setDice(roll1, roll2);
 
-		gameBoard.placePlayer(player, (roll1 + roll2) - 1);
-		GUI.removeCar(12, player.getName());
+		gameBoard.placePlayer(player, (roll1 + roll2));
+		GUI.removeCar(1, player.getName());
 
 		GUI.showMessage(textBoundary.showDiceResult(player, roll1, roll2));
 
@@ -129,7 +127,6 @@ public class GameController {
 		if (player.hasWon() || player.hasLost())
 			return false;
 
-		/* Double click at loss or win. Fix needed. */
 		if (roll1 + roll2 == 10) {
 			GUI.showMessage(textBoundary.extraTurnMessage(player));
 			playTurn(player);

@@ -2,6 +2,7 @@ package spil;
 
 import java.awt.Color;
 
+import desktop_codebehind.Car;
 import desktop_fields.Field;
 import desktop_fields.Street;
 import desktop_resources.GUI;
@@ -68,23 +69,23 @@ public class GameBoard {
 			new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLUE).setTitle(textController.fieldText[0][0])
 					.setSubText(textController.fieldText[0][1]).setDescription(textController.fieldText[0][2]).build(), };
 
+	private final Car[] playerCars = {
+			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0x000000)).secondaryColor(new Color(0xFF0010)).build(),
+			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0x0400FF)).secondaryColor(new Color(0xFF00E1)).build(), };
+
 	public void initFields() {
 		GUI.create(guiFields);
 	}
 
-	
-	
 	public void addPlayer(Player player) {
-		GUI.addPlayer(player.getName(), player.getCoins());
-		GUI.addPlayer(name, balance, car);
-		
+		GUI.addPlayer(player.getName(), player.getCoins(), playerCars[0]);
 	}
 
 	public void placePlayer(Player player, int fieldNum) {
 		GUI.setCar(fieldNum, player.getName());
 	}
 
-	public void resetPlayers(Player ... playerArray) {
+	public void resetPlayers(Player... playerArray) {
 		if (playerArray.length != 0) {
 			for (int i = 0, n = playerArray.length; i < n; i++) {
 				GUI.removeAllCars(playerArray[i].getName());

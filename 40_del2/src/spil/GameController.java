@@ -43,10 +43,10 @@ public class GameController {
 			GUI.showMessage(textController.welcomeMessage);
 			GUI.showMessage(textController.introMessage());
 
-			fieldController.resetPlayers(player1, player2);
-
 			int player1Roll;
 			int player2Roll;
+
+			resetGame();
 
 			do {
 				player1Roll = throwDice(player1);
@@ -61,18 +61,21 @@ public class GameController {
 				}
 			} while (player1Roll == player2Roll);
 
-			fieldController.resetPlayers(player1, player2);
-			player1.resetAccount();
-			player2.resetAccount();
-			fieldController.updatePlayer(player1);
-			fieldController.updatePlayer(player2);
-		    
+			resetGame();
+
 			playAgain = GUI.getUserButtonPressed("Do you want to play again?", "Yes", "No");
 
 		} while (playAgain.equals("Yes"));
 
 		System.exit(0);
+	}
 
+	private void resetGame() {
+		fieldController.resetPlayers(player1, player2);
+		player1.resetAccount();
+		player2.resetAccount();
+		fieldController.updatePlayer(player1);
+		fieldController.updatePlayer(player2);
 	}
 
 	private void playGame(Player firstPlayer, Player lastPlayer) {

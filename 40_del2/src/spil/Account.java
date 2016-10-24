@@ -10,7 +10,7 @@ package spil;
 
 public class Account {
 
-	private final int DEFAULT_COIN_VALUE = 10;
+	private final int DEFAULT_COIN_VALUE = 1000;
 	private int coins = DEFAULT_COIN_VALUE;
 	private int currentAmount;
 

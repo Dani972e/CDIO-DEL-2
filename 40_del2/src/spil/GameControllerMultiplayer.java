@@ -83,8 +83,6 @@ public class GameControllerMultiplayer {
 					
 					players.remove(index);
 				
-					
-				//TODO	
 					playGame(tempPlayer, players);
 					 
 				}

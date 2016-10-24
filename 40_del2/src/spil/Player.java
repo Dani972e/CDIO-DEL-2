@@ -16,30 +16,26 @@ public class Player {
 	private final int MAX_COIN_VALUE = 3000;
 	private final int MIN_COIN_VALUE = 0;
 	private Account acc;
-	private TextController textController;
+	private TextBoundary textController;
 
 	public Player(String name) {
 		this.name = name;
 		acc = new Account();
-		textController = new TextController();
+		textController = new TextBoundary();
 	}
 
 	/* er det okay at skrive dette? */
-	public boolean hasWon(boolean showText) {
+	public boolean hasWon() {
 		if (acc.getCoins() >= MAX_COIN_VALUE) {
-			if (showText) {
-				GUI.showMessage(textController.winMessage(this));
-			}
+			GUI.showMessage(textController.winMessage(this));
 			return true;
 		}
 		return false;
 	}
 
-	public boolean hasLost(boolean showText) {
+	public boolean hasLost() {
 		if (acc.getCoins() <= MIN_COIN_VALUE) {
-			if (showText) {
-				GUI.showMessage(textController.lossMessage(this));
-			}
+			GUI.showMessage(textController.lossMessage(this));
 			return true;
 		}
 		return false;

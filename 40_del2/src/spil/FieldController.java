@@ -17,7 +17,7 @@ import desktop_resources.GUI;
 
 public abstract class FieldController {
 	
-	private static spil.TextController TextController = new TextController();
+	private static spil.TextBoundary TextController = new TextBoundary();
 
 	private static final spil.Field[] fields = {
 			new spil.Field(new Color(0x46B50A), new Color(0xFFFFFF), TextController.fieldText[1][0], TextController.fieldText[1][1],

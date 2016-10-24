@@ -14,9 +14,9 @@ import desktop_resources.GUI;
  * @version 1.0
  */
 
-public class FieldController2 {
+public class GameBoard {
 
-	private TextController textController = new TextController();
+	private TextBoundary textController = new TextBoundary();
 
 	private final spil.Field[] fields = {
 			new spil.Field(new Color(0x46B50A), new Color(0xFFFFFF), textController.fieldText[1][0], textController.fieldText[1][1],
@@ -72,8 +72,12 @@ public class FieldController2 {
 		GUI.create(guiFields);
 	}
 
+	
+	
 	public void addPlayer(Player player) {
 		GUI.addPlayer(player.getName(), player.getCoins());
+		GUI.addPlayer(name, balance, car);
+		
 	}
 
 	public void placePlayer(Player player, int fieldNum) {

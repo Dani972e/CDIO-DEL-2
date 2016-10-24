@@ -18,8 +18,8 @@ public class GameController {
 	private Die die1;
 	private Die die2;
 
-	private FieldController2 fieldController;
-	private TextController textController;
+	private GameBoard fieldController;
+	private TextBoundary textController;
 
 	/* Gør det robust her. Brug f.eks et array, eller en ArrayList til at
 	 * gøre det mere robust for player og dice. Brug konstruktøren til at gøre dette med
@@ -30,8 +30,8 @@ public class GameController {
 		player2 = new Player("Player 2");
 		die1 = new Die(6);
 		die2 = new Die(6);
-		fieldController = new FieldController2();
-		textController = new TextController();
+		fieldController = new GameBoard();
+		textController = new TextBoundary();
 
 		initGame();
 	}
@@ -87,12 +87,12 @@ public class GameController {
 		while (true) {
 			playTurn(firstPlayer);
 
-			if (firstPlayer.hasWon(true) || firstPlayer.hasLost(true))
+			if (firstPlayer.hasWon() || firstPlayer.hasLost())
 				break;
 
 			playTurn(lastPlayer);
 
-			if (lastPlayer.hasWon(true) || lastPlayer.hasLost(true))
+			if (lastPlayer.hasWon() || lastPlayer.hasLost())
 				break;
 
 			fieldController.resetPlayers(firstPlayer, lastPlayer);
@@ -132,12 +132,12 @@ public class GameController {
 			GUI.showMessage(textController.transactionFailed() + "\n\n" + player.getAccountStatus());
 		}
 
+
+		
 		fieldController.updatePlayer(player);
 
-		if (player.hasWon(false) || player.hasLost(false))
-			return;
-
-		if (roll1 + roll2 == 10) {
+		/* Double click at loss or win. Fix needed. */
+		if ((roll1 + roll2 == 10) && !player.hasLost() && !player.hasWon()) {
 			GUI.showMessage(textController.extraTurnMessage(player));
 			playTurn(player);
 		}

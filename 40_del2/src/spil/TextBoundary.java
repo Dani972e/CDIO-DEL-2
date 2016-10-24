@@ -10,7 +10,7 @@ package spil;
 
 public class TextBoundary {
 
-	public String welcomeMessage = "Welcome to the game, \"Treasure Hunt\"!";
+	public String welcomeMessage = "Welcome to the game of \"Treasure Hunt\"!";
 
 	public String introMessage() {
 		StringBuilder sb = new StringBuilder();
@@ -26,8 +26,10 @@ public class TextBoundary {
 			{ "5", "Cold Desert", "You accidentally drop 20 coins in the desert." },
 			{ "6", "Walled City", "It's your lucky day, 180 extra coins magically appear in your pocket." },
 			{ "7", "Monastery", "It's time for some praying." }, { "8", "Black Cave", "You got robbed by trolls and lost 70 coins." },
-			{ "9", "Huts in the mountain", "You find 60 coins in the hut." }, { "10", "The Werewall", "While being chased by a werewolf, you drop 80 coins." },
-			{ "11", "The Pit", "You got knocked unconscious and lost 50 coins." }, { "12", "Goldmine", "You find a mine full of gold, worth 650 coins." }, };
+			{ "9", "Huts in the mountain", "You find 60 coins in the hut." },
+			{ "10", "The Werewall", "While being chased by a werewolf, you drop 80 coins." },
+			{ "11", "The Pit", "You got knocked unconscious and lost 50 coins." },
+			{ "12", "Goldmine", "You find a mine full of gold, worth 650 coins." }, };
 
 	public String throwDiceResult(Player player, int roll1, int roll2) {
 		StringBuilder sb = new StringBuilder();

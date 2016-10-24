@@ -13,7 +13,7 @@ import desktop_resources.GUI;
  */
 
 public class GameControllerMultiplayer {
-	
+
 	private ArrayList<Player> players = new ArrayList<Player>();
 	private Player player1;
 	private Player player2;
@@ -25,13 +25,13 @@ public class GameControllerMultiplayer {
 	private TextBoundary textController;
 
 	public GameControllerMultiplayer(int numberOfPlayers) {
-		
-		for (int i=0; i < numberOfPlayers; ++i)
+
+		for (int i = 0; i < numberOfPlayers; ++i)
 			players.add(new Player("Player " + i));
-		
+
 		die1 = new Die(6);
 		die2 = new Die(6);
-		
+
 		fieldController = new GameBoard();
 		textController = new TextBoundary();
 
@@ -43,8 +43,8 @@ public class GameControllerMultiplayer {
 		do {
 			fieldController.initFields();
 
-			for (int i=0; i < players.size(); ++i)
-			fieldController.addPlayer(players.get(i));
+			for (int i = 0; i < players.size(); ++i)
+				fieldController.addPlayer(players.get(i));
 
 			GUI.showMessage(textController.welcomeMessage);
 			GUI.showMessage(textController.introMessage());
@@ -55,46 +55,44 @@ public class GameControllerMultiplayer {
 
 			do {
 				int numberSameValue = 0;
-				
-				for (int i=0; i < rollList.length; ++i)
-					rollList[i]=throwDice(players.get(i));
-				
-				for (int i=0; i < rollList.length; ++i){
-					for (int n = 0; i < rollList.length; ++n){
-						  if (rollList[i] == rollList[n]) {
-					         numberSameValue += 1;  
-					        }
-					}		
+
+				for (int i = 0; i < rollList.length; ++i)
+					rollList[i] = throwDice(players.get(i));
+
+				for (int i = 0; i < rollList.length; ++i) {
+					for (int n = 0; i < rollList.length; ++n) {
+						if (rollList[i] == rollList[n]) {
+							numberSameValue += 1;
+						}
+					}
 				}
-				
-				
+
 				int index = 0;
 				int MAX = 0;
-				
-				for (int i=0; i<= rollList.length; ++i){
-				
-					if (rollList[i] > MAX) {
-						MAX=rollList[i];
-						index=i;
-						}
-				// players.get(index) is the first player
-					
-					Player tempPlayer = players.get(index);
-					
-					players.remove(index);
-				
-					playGame(tempPlayer, players);
-					 
-				}
-				
 
-				
+				for (int i = 0; i <= rollList.length; ++i) {
+
+					if (rollList[i] > MAX) {
+						MAX = rollList[i];
+						index = i;
+					}
+					// players.get(index) is the first player
+
+					Player tempPlayer = players.get(index);
+
+					players.remove(index);
+
+					playGame(tempPlayer, players);
+
+				}
+
 				if (numberSameValue == rollList.length)
 					return;
-				else break;
-				
+				else
+					break;
+
 			} while (true);
-			
+
 			resetGame();
 
 			playAgain = GUI.getUserButtonPressed("Do you want to play again?", "Yes", "No");

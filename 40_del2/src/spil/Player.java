@@ -24,6 +24,7 @@ public class Player {
 		textController = new TextController();
 	}
 
+	/* er det okay at skrive dette? */
 	public boolean hasWon(boolean showText) {
 		if (acc.getCoins() >= MAX_COIN_VALUE) {
 			if (showText) {
@@ -57,7 +58,7 @@ public class Player {
 	}
 
 	public void resetAccount() {
-		acc.resetAccount(); 
+		acc.resetAccount();
 	}
 
 	public String getAccountStatus() {

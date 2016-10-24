@@ -17,15 +17,15 @@ public class Field {
 	private String title;
 	private String subText;
 	private String desc;
-	private int coinChange;
+	private int coinEffect;
 
-	public Field(Color bgColor, Color fgColor, String title, String subText, String desc, int coinChange) {
+	public Field(Color bgColor, Color fgColor, String title, String subText, String desc, int coinEffect) {
 		this.bgColor = bgColor;
 		this.fgColor = fgColor;
 		this.title = title;
 		this.subText = subText;
 		this.desc = desc;
-		this.coinChange = coinChange;
+		this.coinEffect = coinEffect;
 	}
 
 	public Color getBgColor() {
@@ -48,8 +48,8 @@ public class Field {
 		return desc;
 	}
 
-	public int getCoinChange() {
-		return coinChange;
+	public int getCoinEffect() {
+		return coinEffect;
 	}
 
 }

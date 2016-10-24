@@ -106,7 +106,7 @@ public abstract class FieldController {
 		GUI.removeCar(12, player.getName());
 		GUI.setCar(index - 1, player.getName());
 
-		player.addCoins(fields[index - 2].getCoinChange());
+		player.addCoins(fields[index - 2].getCoinEffect());
 
 		GUI.setBalance(player.getName(), player.getCoins());
 	}

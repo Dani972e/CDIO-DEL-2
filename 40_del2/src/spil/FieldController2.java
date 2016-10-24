@@ -80,7 +80,7 @@ public class FieldController2 {
 		GUI.setCar(fieldNum, player.getName());
 	}
 
-	public void resetPlayers(Player... playerArray) {
+	public void resetPlayers(Player ... playerArray) {
 		if (playerArray.length != 0) {
 			for (int i = 0, n = playerArray.length; i < n; i++) {
 				GUI.removeAllCars(playerArray[i].getName());
@@ -90,8 +90,9 @@ public class FieldController2 {
 	}
 
 	public int getFieldEffect(int roll1, int roll2) {
-		int rollSum = (roll1 + roll2) - 2;
-		return fields[rollSum].getCoinChange();
+		int offset = 2;
+		int fieldIndex = (roll1 + roll2) - offset;
+		return fields[fieldIndex].getCoinEffect();
 	}
 
 	public void updatePlayer(Player player) {

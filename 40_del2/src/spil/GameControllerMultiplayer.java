@@ -26,7 +26,7 @@ public class GameControllerMultiplayer {
 
 	public GameControllerMultiplayer(int numberOfPlayers) {
 		
-		for (int i=0; i<=numberOfPlayers; ++i)
+		for (int i=0; i < numberOfPlayers; ++i)
 			players.add(new Player("Player " + i));
 		
 		die1 = new Die(6);
@@ -43,7 +43,7 @@ public class GameControllerMultiplayer {
 		do {
 			fieldController.initFields();
 
-			for (int i=0; i<=players.size(); ++i)
+			for (int i=0; i < players.size(); ++i)
 			fieldController.addPlayer(players.get(i));
 
 			GUI.showMessage(textController.welcomeMessage);
@@ -54,25 +54,38 @@ public class GameControllerMultiplayer {
 			resetGame();
 
 			do {
-				for (int i=0; i<=players.size(); ++i)
+				int numberSameValue = 0;
+				
+				for (int i=0; i < rollList.length; ++i)
 					rollList[i]=throwDice(players.get(i));
 				
+				for (int i=0; i < rollList.length; ++i){
+					for (int n = 0; i < rollList.length; ++n){
+						  if (rollList[i] == rollList[n]) {
+					         numberSameValue += 1;  
+					        }
+					}		
+				}
+				
+				if (numberSameValue == rollList.length)
+					return;
 				
 				int index = 0;
 				int MAX = 0;
 				
-				for (int i=0; i<=players.size(); ++i){
+				for (int i=0; i<= rollList.length; ++i){
 				
 					if (rollList[i] > MAX) {
 						MAX=rollList[i];
 						index=i;
 						}
-				
+				// players[index] is the first player
+					
 				//TODO	
 					playGame(player1, player2);
 					 
 				}
-			} while (player1Roll == player2Roll);
+			} while (true);
 
 			resetGame();
 

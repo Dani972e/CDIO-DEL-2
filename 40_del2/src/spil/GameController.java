@@ -74,7 +74,6 @@ public class GameController {
 
 		System.exit(0);
 	}
-
 	private void resetGame() {
 		gameBoard.resetPlayers(player1, player2);
 		player1.resetAccount();

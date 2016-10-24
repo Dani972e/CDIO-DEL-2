@@ -2,6 +2,7 @@ package spil;
 
 import java.awt.Color;
 
+import desktop_codebehind.Car;
 import desktop_fields.Field;
 import desktop_fields.Street;
 import desktop_resources.GUI;
@@ -14,9 +15,9 @@ import desktop_resources.GUI;
  * @version 1.0
  */
 
-public class FieldController2 {
+public class GameBoard {
 
-	private TextController textController = new TextController();
+	private TextBoundary textController = new TextBoundary();
 
 	private final spil.Field[] fields = {
 			new spil.Field(new Color(0x46B50A), new Color(0xFFFFFF), textController.fieldText[1][0], textController.fieldText[1][1],
@@ -68,12 +69,16 @@ public class FieldController2 {
 			new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLUE).setTitle(textController.fieldText[0][0])
 					.setSubText(textController.fieldText[0][1]).setDescription(textController.fieldText[0][2]).build(), };
 
+	private final Car[] playerCars = {
+			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0x000000)).secondaryColor(new Color(0xFF0010)).build(),
+			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0x0400FF)).secondaryColor(new Color(0xFF00E1)).build(), };
+
 	public void initFields() {
 		GUI.create(guiFields);
 	}
 
 	public void addPlayer(Player player) {
-		GUI.addPlayer(player.getName(), player.getCoins());
+		GUI.addPlayer(player.getName(), player.getCoins(), playerCars[0]);
 	}
 
 	public void placePlayer(Player player, int fieldNum) {
@@ -90,8 +95,9 @@ public class FieldController2 {
 	}
 
 	public int getFieldEffect(int roll1, int roll2) {
-		int rollSum = (roll1 + roll2) - 2;
-		return fields[rollSum].getCoinChange();
+		int offset = 2;
+		int fieldIndex = (roll1 + roll2) - offset;
+		return fields[fieldIndex].getCoinEffect();
 	}
 
 	public void updatePlayer(Player player) {

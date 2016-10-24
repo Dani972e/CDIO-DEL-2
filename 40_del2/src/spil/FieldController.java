@@ -17,7 +17,7 @@ import desktop_resources.GUI;
 
 public final class FieldController {
 	
-	private static spil.TextController TextController = new TextController();
+	private static spil.TextBoundary TextController = new TextBoundary();
 
 	private static final spil.Field[] fields = {
 			new spil.Field(new Color(0x46B50A), new Color(0xFFFFFF), TextController.fieldText[1][0], TextController.fieldText[1][1],
@@ -108,7 +108,7 @@ public final class FieldController {
 		GUI.removeCar(12, player.getName());
 		GUI.setCar(index - 1, player.getName());
 
-		player.addCoins(fields[index - 2].getCoinChange());
+		player.addCoins(fields[index - 2].getCoinEffect());
 
 		GUI.setBalance(player.getName(), player.getCoins());
 	}

@@ -8,7 +8,7 @@ package spil;
  * @version 1.0
  */
 
-public class TextController {
+public class TextBoundary {
 
 	public String welcomeMessage = "Welcome to the game, \"Treasure Hunt\"!";
 

@@ -10,8 +10,8 @@ package spil;
 
 public class Account {
 
-	private final int DEFAULT_COIN_VALUE = 1000;
-	private int coins = DEFAULT_COIN_VALUE;
+	private final int DEFAULT_COIN_AMOUNT = 10;
+	private int coins = DEFAULT_COIN_AMOUNT;
 	private int currentAmount;
 
 	public boolean addCoins(int amount) {
@@ -20,12 +20,11 @@ public class Account {
 			coins += amount;
 			return true;
 		}
-		coins = 0;
 		return false;
 	}
 
 	public void resetAccount() {
-		coins = DEFAULT_COIN_VALUE;
+		coins = DEFAULT_COIN_AMOUNT;
 		currentAmount = 0;
 	}
 

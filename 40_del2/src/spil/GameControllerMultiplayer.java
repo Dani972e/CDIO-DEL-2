@@ -67,8 +67,6 @@ public class GameControllerMultiplayer {
 					}		
 				}
 				
-				if (numberSameValue == rollList.length)
-					return;
 				
 				int index = 0;
 				int MAX = 0;
@@ -79,12 +77,22 @@ public class GameControllerMultiplayer {
 						MAX=rollList[i];
 						index=i;
 						}
-				// players[index] is the first player
+				// players.get(index) is the first player
+					
+					Player tempPlayer = players.get(index);
+					
+					players.remove(index);
+				
 					
 				//TODO	
-					playGame(player1, player2);
+					playGame(tempPlayer, players);
 					 
 				}
+				
+				if (numberSameValue == rollList.length)
+					return;
+				else break;
+				
 			} while (true);
 
 			resetGame();
@@ -104,7 +112,7 @@ public class GameControllerMultiplayer {
 		fieldController.updatePlayer(player2);
 	}
 
-	private void playGame(Player firstPlayer, Player lastPlayer) {
+	private void playGame(Player firstPlayer, ArrayList<Player> players) {
 
 		while (true) {
 			playTurn(firstPlayer);

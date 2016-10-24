@@ -94,7 +94,7 @@ public class GameControllerMultiplayer {
 				else break;
 				
 			} while (true);
-
+			
 			resetGame();
 
 			playAgain = GUI.getUserButtonPressed("Do you want to play again?", "Yes", "No");

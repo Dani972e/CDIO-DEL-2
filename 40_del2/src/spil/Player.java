@@ -18,7 +18,7 @@ public class Player {
 
 	public Player(String name) {
 		this.name = name;
-		acc = new Account();
+		acc = new Account(3000, 1000, 0);
 		textBoundary = new TextBoundary();
 	}
 

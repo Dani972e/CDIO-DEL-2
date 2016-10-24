@@ -10,10 +10,17 @@ package spil;
 
 public class Account {
 
-	private final int MAX_COIN_AMOUNT = 3000;
-	private final int DEFAULT_COIN_AMOUNT = 10;
-	private final int MIN_COIN_AMOUNT = 0;
-	private int coins = DEFAULT_COIN_AMOUNT;
+	private final int MAX_COIN_AMOUNT;
+	private final int DEFAULT_COIN_AMOUNT;
+	private final int MIN_COIN_AMOUNT;
+	private int coins;
+	
+	public Account(int maxCoinAmount, int defaultCoinAmount, int minCoinAmount) {
+		this.MAX_COIN_AMOUNT = maxCoinAmount;
+		this.DEFAULT_COIN_AMOUNT = defaultCoinAmount;
+		this.MIN_COIN_AMOUNT = minCoinAmount;
+		coins = DEFAULT_COIN_AMOUNT;
+	}
 
 	public void addCoins(int amount) {
 		coins += amount;

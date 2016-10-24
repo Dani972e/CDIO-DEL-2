@@ -15,7 +15,7 @@ import desktop_fields.Field;
 import desktop_fields.Street;
 import desktop_resources.GUI;
 
-public abstract class FieldController {
+public final class FieldController {
 	
 	private static spil.TextController TextController = new TextController();
 

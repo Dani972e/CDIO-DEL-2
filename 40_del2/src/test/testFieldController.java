@@ -14,7 +14,7 @@ public class testFieldController {
 		Player p2 = new Player("Player2");
 		int[] player1roll;
 		int[] player2roll;
-
+		
 		FieldController.createArea(p1, p2);
 
 		// Turn 1 with combo x2 player 1

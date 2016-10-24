@@ -43,6 +43,14 @@ public class TextController {
 		return sb.toString();
 	}
 
+	public String transactionCompleted() {
+		return "Transaction completed successfully!";
+	}
+
+	public String transactionFailed() {
+		return "Transaction failed!";
+	}
+
 	public String rollMessage(Player player) {
 		return player.getName() + " rolling next!";
 	}

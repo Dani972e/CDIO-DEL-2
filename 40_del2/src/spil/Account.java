@@ -11,13 +11,28 @@ package spil;
 public class Account {
 
 	private int coins = 1000;
+	private int currentAmount;
 
-	public void addCoins(int amount) {
-		coins += amount;
+	public boolean addCoins(int amount) {
+		currentAmount = amount;
+		if (coins > 0 && (coins + amount) >= 0) {
+			coins += amount;
+			return true;
+		}
+		coins = 0;
+		return false;
 	}
 
 	public int getCoins() {
 		return coins;
+	}
+
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("<--- Account Status --->\n");
+		sb.append("Amount: " + currentAmount + "\n");
+		sb.append("Coins:    " + coins + "\n");
+		return sb.toString();
 	}
 
 }

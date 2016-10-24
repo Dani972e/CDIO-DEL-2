@@ -48,8 +48,12 @@ public class Player {
 		return acc.getCoins();
 	}
 
-	public void addCoins(int amount) {
-		acc.addCoins(amount);
+	public boolean addCoins(int amount) {
+		return acc.addCoins(amount);
+	}
+
+	public String getAccountStatus() {
+		return acc.toString();
 	}
 
 }

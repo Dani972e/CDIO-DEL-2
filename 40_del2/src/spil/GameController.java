@@ -94,15 +94,22 @@ public class GameController {
 
 		GUI.showMessage(textController.rollMessage(player));
 
-		player.addCoins(fieldController.getFieldEffect(roll1, roll2));
-		fieldController.updatePlayer(player);
-
 		GUI.setDice(roll1, roll2);
 
 		fieldController.placePlayer(player, (roll1 + roll2) - 1);
 		GUI.removeCar(12, player.getName());
 
 		GUI.showMessage(textController.showDiceResult(player, roll1, roll2));
+
+		boolean transactionStatus = player.addCoins(fieldController.getFieldEffect(roll1, roll2));
+
+		if (transactionStatus) {
+			GUI.showMessage(textController.transactionCompleted() + "\n\n" + player.getAccountStatus());
+		} else {
+			GUI.showMessage(textController.transactionFailed() + "\n\n" + player.getAccountStatus());
+		}
+
+		fieldController.updatePlayer(player);
 
 		if (roll1 + roll2 == 10) {
 			GUI.showMessage(textController.extraTurnMessage(player));

@@ -23,7 +23,7 @@ public class GameController {
 
 	/* Gør det robust her. Brug f.eks et array, eller en ArrayList til at
 	 * gøre det mere robust for player og dice. Brug konstruktøren til at gøre dette med
-	 * ints f.eks.
+	 * ints f.eks
 	 */
 	public GameController() {
 		player1 = new Player("Player 1");

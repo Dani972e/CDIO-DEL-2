@@ -24,17 +24,21 @@ public class Player {
 		textController = new TextController();
 	}
 
-	public boolean hasWon() {
+	public boolean hasWon(boolean showText) {
 		if (acc.getCoins() >= MAX_COIN_VALUE) {
-			GUI.showMessage(textController.winMessage(this));
+			if (showText) {
+				GUI.showMessage(textController.winMessage(this));
+			}
 			return true;
 		}
 		return false;
 	}
 
-	public boolean hasLost() {
+	public boolean hasLost(boolean showText) {
 		if (acc.getCoins() <= MIN_COIN_VALUE) {
-			GUI.showMessage(textController.lossMessage(this));
+			if (showText) {
+				GUI.showMessage(textController.lossMessage(this));
+			}
 			return true;
 		}
 		return false;
@@ -50,6 +54,10 @@ public class Player {
 
 	public boolean addCoins(int amount) {
 		return acc.addCoins(amount);
+	}
+
+	public void resetAccount() {
+		acc.resetAccount();
 	}
 
 	public String getAccountStatus() {

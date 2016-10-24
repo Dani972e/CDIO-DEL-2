@@ -33,47 +33,62 @@ public class GameController {
 	}
 
 	private void initGame() {
-		fieldController.initFields();
-
-		fieldController.addPlayer(player1);
-		fieldController.addPlayer(player2);
-
-		GUI.showMessage(textController.welcomeMessage);
-		GUI.showMessage(textController.introMessage());
-
-		fieldController.resetPlayers(player1, player2);
-
-		int player1Roll;
-		int player2Roll;
-
+		String playAgain;
 		do {
-			player1Roll = throwDice(player1);
-			player2Roll = throwDice(player2);
+			fieldController.initFields();
 
-			if (player1Roll > player2Roll) {
-				GUI.showMessage(textController.startMessage(player1));
-				playGame(player1, player2);
-			} else if (player2Roll > player1Roll) {
-				GUI.showMessage(textController.startMessage(player2));
-				playGame(player2, player1);
-			}
-		} while (player1Roll == player2Roll);
+			fieldController.addPlayer(player1);
+			fieldController.addPlayer(player2);
+
+			GUI.showMessage(textController.welcomeMessage);
+			GUI.showMessage(textController.introMessage());
+
+			fieldController.resetPlayers(player1, player2);
+
+			int player1Roll;
+			int player2Roll;
+
+			do {
+				player1Roll = throwDice(player1);
+				player2Roll = throwDice(player2);
+
+				if (player1Roll > player2Roll) {
+					GUI.showMessage(textController.startMessage(player1));
+					playGame(player1, player2);
+				} else if (player2Roll > player1Roll) {
+					GUI.showMessage(textController.startMessage(player2));
+					playGame(player2, player1);
+				}
+			} while (player1Roll == player2Roll);
+
+			fieldController.resetPlayers(player1, player2);
+			player1.resetAccount();
+			player2.resetAccount();
+			fieldController.updatePlayer(player1);
+			fieldController.updatePlayer(player2);
+			playAgain = GUI.getUserButtonPressed("Do you want to play again?", "Yes", "No");
+
+		} while (playAgain.equals("Yes"));
+
+		System.exit(0);
 
 	}
 
 	private void playGame(Player firstPlayer, Player lastPlayer) {
+
 		while (true) {
 			playTurn(firstPlayer);
 
-			if (firstPlayer.hasWon() || firstPlayer.hasLost())
+			if (firstPlayer.hasWon(true) || firstPlayer.hasLost(true))
 				break;
 
 			playTurn(lastPlayer);
 
-			if (lastPlayer.hasWon() || lastPlayer.hasLost())
+			if (lastPlayer.hasWon(true) || lastPlayer.hasLost(true))
 				break;
 
 			fieldController.resetPlayers(firstPlayer, lastPlayer);
+
 		}
 
 	}
@@ -110,6 +125,9 @@ public class GameController {
 		}
 
 		fieldController.updatePlayer(player);
+
+		if (player.hasWon(false) || player.hasLost(false))
+			return;
 
 		if (roll1 + roll2 == 10) {
 			GUI.showMessage(textController.extraTurnMessage(player));

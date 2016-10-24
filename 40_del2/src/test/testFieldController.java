@@ -30,7 +30,7 @@ public class testFieldController {
 		FieldController.play(p1, p2, player1roll, player2roll);
 
 		// Turn 3 with combo x3 player 2
-		player1roll=createRollList(5,3);
+	as	player1roll=createRollList(5,3);
 		player2roll=createRollList(5,5,6,4,1,2);
 		FieldController.play(p1, p2, player1roll, player2roll);
 	}

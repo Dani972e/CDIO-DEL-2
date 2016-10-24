@@ -10,34 +10,35 @@ package spil;
 
 public class Account {
 
+	private final int MAX_COIN_AMOUNT = 3000;
 	private final int DEFAULT_COIN_AMOUNT = 10;
+	private final int MIN_COIN_AMOUNT = 0;
 	private int coins = DEFAULT_COIN_AMOUNT;
-	private int currentAmount;
 
-	public boolean addCoins(int amount) {
-		currentAmount = amount;
-		if (coins > 0 && (coins + amount) >= 0) {
-			coins += amount;
-			return true;
-		}
-		return false;
+	public void addCoins(int amount) {
+		coins += amount;
 	}
 
 	public void resetAccount() {
 		coins = DEFAULT_COIN_AMOUNT;
-		currentAmount = 0;
 	}
 
 	public int getCoins() {
 		return coins;
 	}
 
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("<--- Account Status --->\n");
-		sb.append("Amount: " + currentAmount + "\n");
-		sb.append("Coins:    " + coins + "\n");
-		return sb.toString();
+	public boolean isFull() {
+		if (coins >= MAX_COIN_AMOUNT) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean isEmpty() {
+		if (coins <= MIN_COIN_AMOUNT) {
+			return true;
+		}
+		return false;
 	}
 
 }

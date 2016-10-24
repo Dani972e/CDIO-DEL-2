@@ -44,6 +44,8 @@ public class GameBoard {
 					textController.fieldText[11][2], 650), };
 
 	private final Field[] guiFields = {
+			new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLUE).setTitle(textController.fieldText[0][0])
+					.setSubText(textController.fieldText[0][1]).setDescription(textController.fieldText[0][2]).build(),
 			new Street.Builder().setBgColor(fields[0].getBgColor()).setFgColor(fields[0].getFgColor()).setTitle(fields[0].getTitle())
 					.setSubText(fields[0].getSubText()).setDescription(fields[0].getDesc()).build(),
 			new Street.Builder().setBgColor(fields[1].getBgColor()).setFgColor(fields[1].getFgColor()).setTitle(fields[1].getTitle())
@@ -65,20 +67,21 @@ public class GameBoard {
 			new Street.Builder().setBgColor(fields[9].getBgColor()).setFgColor(fields[9].getFgColor()).setTitle(fields[9].getTitle())
 					.setSubText(fields[9].getSubText()).setDescription(fields[9].getDesc()).build(),
 			new Street.Builder().setBgColor(fields[10].getBgColor()).setFgColor(fields[10].getFgColor()).setTitle(fields[10].getTitle())
-					.setSubText(fields[10].getSubText()).setDescription(fields[10].getDesc()).build(),
-			new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLUE).setTitle(textController.fieldText[0][0])
-					.setSubText(textController.fieldText[0][1]).setDescription(textController.fieldText[0][2]).build(), };
+					.setSubText(fields[10].getSubText()).setDescription(fields[10].getDesc()).build() };
 
 	private final Car[] playerCars = {
 			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0x000000)).secondaryColor(new Color(0xFF0010)).build(),
-			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0x0400FF)).secondaryColor(new Color(0xFF00E1)).build(), };
+			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0x0400FF)).secondaryColor(new Color(0xFF00E1)).build(),
+			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0xAF4342)).secondaryColor(new Color(0xFF0910)).build(),
+			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0xFA4039)).secondaryColor(new Color(0xF023E1)).build(),
+			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0xABC423)).secondaryColor(new Color(0xAB0FA0)).build(), };
 
 	public void initFields() {
 		GUI.create(guiFields);
 	}
 
 	public void addPlayer(Player player) {
-		GUI.addPlayer(player.getName(), player.getCoins(), playerCars[0]);
+		GUI.addPlayer(player.getName(), player.getCoins(), getRandomCar());
 	}
 
 	public void placePlayer(Player player, int fieldNum) {
@@ -89,7 +92,7 @@ public class GameBoard {
 		if (playerArray.length != 0) {
 			for (int i = 0, n = playerArray.length; i < n; i++) {
 				GUI.removeAllCars(playerArray[i].getName());
-				placePlayer(playerArray[i], 12);
+				placePlayer(playerArray[i], 1);
 			}
 		}
 	}
@@ -102,6 +105,11 @@ public class GameBoard {
 
 	public void updatePlayer(Player player) {
 		GUI.setBalance(player.getName(), player.getCoins());
+	}
+
+	private Car getRandomCar() {
+		int index = (int) ((Math.random() * playerCars.length));
+		return playerCars[index];
 	}
 
 }

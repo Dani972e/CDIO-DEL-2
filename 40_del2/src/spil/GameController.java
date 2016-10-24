@@ -18,7 +18,7 @@ public class GameController {
 	private Die die1;
 	private Die die2;
 
-	private GameBoard fieldController;
+	private GameBoard gameBoard;
 	private TextBoundary textBoundary;
 
 	/* Gør det robust her. Brug f.eks et array, eller en ArrayList til at
@@ -30,7 +30,7 @@ public class GameController {
 		player2 = new Player("Player 2");
 		die1 = new Die(6);
 		die2 = new Die(6);
-		fieldController = new GameBoard();
+		gameBoard = new GameBoard();
 		textBoundary = new TextBoundary();
 
 		initGame();
@@ -39,10 +39,10 @@ public class GameController {
 	private void initGame() {
 		String playAgain;
 		do {
-			fieldController.initFields();
+			gameBoard.initFields();
 
-			fieldController.addPlayer(player1);
-			fieldController.addPlayer(player2);
+			gameBoard.addPlayer(player1);
+			gameBoard.addPlayer(player2);
 
 			GUI.showMessage(textBoundary.welcomeMessage);
 			GUI.showMessage(textBoundary.introMessage());
@@ -76,27 +76,25 @@ public class GameController {
 	}
 
 	private void resetGame() {
-		fieldController.resetPlayers(player1, player2);
+		gameBoard.resetPlayers(player1, player2);
 		player1.resetAccount();
 		player2.resetAccount();
-		fieldController.updatePlayer(player1);
-		fieldController.updatePlayer(player2);
+		gameBoard.updatePlayer(player1);
+		gameBoard.updatePlayer(player2);
 	}
 
 	private void playGame(Player firstPlayer, Player lastPlayer) {
 
 		while (true) {
-			playTurn(firstPlayer);
-
-			if (firstPlayer.hasWon() || firstPlayer.hasLost())
+			if (!playTurn(firstPlayer)) {
 				break;
-
-			playTurn(lastPlayer);
-
-			if (lastPlayer.hasWon() || lastPlayer.hasLost())
+			}
+			
+			if (!playTurn(lastPlayer)) {
 				break;
+			}
 
-			fieldController.resetPlayers(firstPlayer, lastPlayer);
+			gameBoard.resetPlayers(firstPlayer, lastPlayer);
 
 		}
 
@@ -112,7 +110,7 @@ public class GameController {
 		return roll1 + roll2;
 	}
 
-	private void playTurn(Player player) {
+	private boolean playTurn(Player player) {
 		int roll1 = die1.roll();
 		int roll2 = die2.roll();
 
@@ -120,26 +118,24 @@ public class GameController {
 
 		GUI.setDice(roll1, roll2);
 
-		fieldController.placePlayer(player, (roll1 + roll2) - 1);
+		gameBoard.placePlayer(player, (roll1 + roll2) - 1);
 		GUI.removeCar(12, player.getName());
 
 		GUI.showMessage(textBoundary.showDiceResult(player, roll1, roll2));
 
-		boolean transactionStatus = player.addCoins(fieldController.getFieldEffect(roll1, roll2));
+		player.addCoins(gameBoard.getFieldEffect(roll1, roll2));
 
-		if (transactionStatus) {
-			GUI.showMessage(textBoundary.transactionCompleted() + "\n\n" + player.getAccountStatus());
-		} else {
-			GUI.showMessage(textBoundary.transactionFailed() + "\n\n" + player.getAccountStatus());
-		}
+		gameBoard.updatePlayer(player);
 
-		fieldController.updatePlayer(player);
+		if (player.hasWon() || player.hasLost())
+			return false;
 
 		/* Double click at loss or win. Fix needed. */
-		if ((roll1 + roll2 == 10) && !player.hasLost() && !player.hasWon()) {
+		if (roll1 + roll2 == 10) {
 			GUI.showMessage(textBoundary.extraTurnMessage(player));
 			playTurn(player);
 		}
+		return true;
 	}
 
 }

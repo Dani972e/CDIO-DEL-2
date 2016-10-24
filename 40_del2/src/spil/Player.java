@@ -57,7 +57,7 @@ public class Player {
 	}
 
 	public void resetAccount() {
-		acc.resetAccount();
+		acc.resetAccount(); 
 	}
 
 	public String getAccountStatus() {

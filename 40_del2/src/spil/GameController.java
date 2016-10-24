@@ -66,6 +66,7 @@ public class GameController {
 			player2.resetAccount();
 			fieldController.updatePlayer(player1);
 			fieldController.updatePlayer(player2);
+		    
 			playAgain = GUI.getUserButtonPressed("Do you want to play again?", "Yes", "No");
 
 		} while (playAgain.equals("Yes"));

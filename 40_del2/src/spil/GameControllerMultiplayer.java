@@ -87,6 +87,8 @@ public class GameControllerMultiplayer {
 					 
 				}
 				
+
+				
 				if (numberSameValue == rollList.length)
 					return;
 				else break;

@@ -43,13 +43,13 @@ public class GameControllerMultiplayer {
 		do {
 			fieldController.initFields();
 
-			fieldController.addPlayer(player1);
-			fieldController.addPlayer(player2);
+			for (int i=0; i<=players.size(); ++i)
+			fieldController.addPlayer(players.get(i));
 
 			GUI.showMessage(textController.welcomeMessage);
 			GUI.showMessage(textController.introMessage());
 
-			int[] rollList;
+			int[] rollList = new int[players.size()];
 
 			resetGame();
 
@@ -59,17 +59,18 @@ public class GameControllerMultiplayer {
 				
 				
 				int index = 0;
+				int MAX = 0;
 				
 				for (int i=0; i<=players.size(); ++i){
 				
-					if (rollList[i] > rollList[i + 1]) {
-					index=i;
+					if (rollList[i] > MAX) {
+						MAX=rollList[i];
+						index=i;
+						}
+				
+				//TODO	
 					playGame(player1, player2);
-					
-				} else if (player2Roll > player1Roll) {
-					GUI.showMessage(textController.startMessage(player2));
-					playGame(player2, player1);
-				}
+					 
 				}
 			} while (player1Roll == player2Roll);
 

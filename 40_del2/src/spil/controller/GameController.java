@@ -87,6 +87,7 @@ public class GameController {
 				break;
 
 			gameBoard.resetPlayers(firstPlayer, lastPlayer);
+			GUI.showMessage(textBoundary.roundMessage);
 		}
 
 	}

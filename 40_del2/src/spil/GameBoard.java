@@ -76,6 +76,9 @@ public class GameBoard {
 			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0xFA4039)).secondaryColor(new Color(0xF023E1)).build(),
 			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0xABC423)).secondaryColor(new Color(0xAB0FA0)).build(), };
 
+	/* Is this OK? */
+	private final boolean[] carTaken = { false, false, false, false, false };
+
 	public void initFields() {
 		GUI.create(guiFields);
 	}
@@ -110,7 +113,13 @@ public class GameBoard {
 	/* Revise this. Not working as intended. */
 	private Car getRandomCar() {
 		int index = (int) ((Math.random() * playerCars.length));
-		return playerCars[index];
+
+		if (!carTaken[index]) {
+			carTaken[index] = true;
+			return playerCars[index];
+		}
+
+		return getRandomCar();
 	}
 
 }

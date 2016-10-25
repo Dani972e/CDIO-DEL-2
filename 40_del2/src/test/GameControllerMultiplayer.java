@@ -86,7 +86,7 @@ public class GameControllerMultiplayer {
 
 					players.remove(index);
 
-					playGame(tempPlayer, players);
+				//TODO	playGame(tempPlayer, players);
 
 				}
 
@@ -114,7 +114,7 @@ public class GameControllerMultiplayer {
 		fieldController.updatePlayer(player2);
 	}
 
-	private void playGame(Player firstPlayer, ArrayList<Player> players) {
+/*	private void playGame(Player firstPlayer, ArrayList<Player> players) {
 
 		while (true) {
 			playTurn(firstPlayer);
@@ -131,14 +131,14 @@ public class GameControllerMultiplayer {
 
 		}
 
-	}
+	}*/
 
 	private int throwDice(Player player) {
 		int roll1 = die1.roll();
 		int roll2 = die2.roll();
 
 		GUI.setDice(roll1, roll2);
-		GUI.showMessage(textController.throwDiceResult(player, roll1, roll2));
+		//GUI.showMessage(textController.throwDiceResult(player, roll1, roll2));
 
 		return roll1 + roll2;
 	}
@@ -147,27 +147,19 @@ public class GameControllerMultiplayer {
 		int roll1 = die1.roll();
 		int roll2 = die2.roll();
 
-		GUI.showMessage(textController.rollMessage(player));
+		//GUI.showMessage(textController.rollMessage(player));
 
 		GUI.setDice(roll1, roll2);
 
 		fieldController.placePlayer(player, (roll1 + roll2) - 1);
 		GUI.removeCar(12, player.getName());
 
-		GUI.showMessage(textController.getDiceResult(player, roll1, roll2));
-
-		boolean transactionStatus = player.addCoins(fieldController.getFieldEffect(roll1, roll2));
-
-		if (transactionStatus) {
-			GUI.showMessage(textController.transactionCompleted() + "\n\n" + player.getAccountStatus());
-		} else {
-			GUI.showMessage(textController.transactionFailed() + "\n\n" + player.getAccountStatus());
-		}
+		//GUI.showMessage(textController.getDiceResult(player, roll1, roll2));
 
 		fieldController.updatePlayer(player);
 
-		if (player.hasWon(false) || player.hasLost(false))
-			return;
+		// if (player.hasWon(false) || player.hasLost(false))
+			//return;
 
 		if (roll1 + roll2 == 10) {
 			GUI.showMessage(textController.extraTurnMessage(player));

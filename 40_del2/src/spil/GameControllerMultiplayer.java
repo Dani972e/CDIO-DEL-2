@@ -150,7 +150,7 @@ public class GameControllerMultiplayer {
 		fieldController.placePlayer(player, (roll1 + roll2) - 1);
 		GUI.removeCar(12, player.getName());
 
-		GUI.showMessage(textController.showDiceResult(player, roll1, roll2));
+		GUI.showMessage(textController.getDiceResult(player, roll1, roll2));
 
 		boolean transactionStatus = player.addCoins(fieldController.getFieldEffect(roll1, roll2));
 

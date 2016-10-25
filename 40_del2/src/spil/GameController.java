@@ -71,28 +71,18 @@ public class GameController {
 		System.exit(0);
 	}
 
-	private void resetGame() {
-		gameBoard.resetPlayers(player1, player2);
-		player1.resetAccount();
-		player2.resetAccount();
-		gameBoard.updatePlayer(player1);
-		gameBoard.updatePlayer(player2);
-	}
-
 	private void playGame(Player firstPlayer, Player lastPlayer) {
 
 		/* Revise this */
 		while (true) {
-			if (!playTurn(firstPlayer)) {
-				break;
-			}
 
-			if (!playTurn(lastPlayer)) {
+			if (!playTurn(firstPlayer))
 				break;
-			}
+
+			if (!playTurn(lastPlayer))
+				break;
 
 			gameBoard.resetPlayers(firstPlayer, lastPlayer);
-
 		}
 
 	}
@@ -102,8 +92,7 @@ public class GameController {
 		int roll2 = die2.roll();
 
 		GUI.setDice(roll1, roll2);
-		GUI.showMessage(textBoundary.throwDiceResult(player, roll1, roll2));
-
+		GUI.showMessage(textBoundary.getDiceResult(player, roll1, roll2, false));
 		return roll1 + roll2;
 	}
 
@@ -118,7 +107,7 @@ public class GameController {
 		gameBoard.placePlayer(player, (roll1 + roll2));
 		GUI.removeCar(1, player.getName());
 
-		GUI.showMessage(textBoundary.showDiceResult(player, roll1, roll2));
+		GUI.showMessage(textBoundary.getDiceResult(player, roll1, roll2, true));
 
 		player.addCoins(gameBoard.getFieldEffect(roll1, roll2));
 
@@ -132,6 +121,14 @@ public class GameController {
 			playTurn(player);
 		}
 		return true;
+	}
+
+	private void resetGame() {
+		gameBoard.resetPlayers(player1, player2);
+		player1.resetAccount();
+		player2.resetAccount();
+		gameBoard.updatePlayer(player1);
+		gameBoard.updatePlayer(player2);
 	}
 
 }

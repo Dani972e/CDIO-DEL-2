@@ -1,6 +1,5 @@
 package test;
 
-import spil.FieldController;
 import spil.Player;
 
 public class testFieldController {

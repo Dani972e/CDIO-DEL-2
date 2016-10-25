@@ -7,13 +7,15 @@
  * @version 1.0
  */
 
-package spil;
+package test;
 
 import java.awt.Color;
 
 import desktop_fields.Field;
 import desktop_fields.Street;
 import desktop_resources.GUI;
+import spil.Player;
+import spil.TextBoundary;
 
 public final class FieldController {
 	

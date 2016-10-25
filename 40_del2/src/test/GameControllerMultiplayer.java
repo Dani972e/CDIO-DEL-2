@@ -1,8 +1,12 @@
-package spil;
+package test;
 
 import java.util.ArrayList;
 
 import desktop_resources.GUI;
+import spil.Die;
+import spil.GameBoard;
+import spil.Player;
+import spil.TextBoundary;
 
 /**
  * @author Daniel Larsen (s151641)

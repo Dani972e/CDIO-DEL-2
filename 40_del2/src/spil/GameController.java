@@ -33,7 +33,7 @@ public class GameController {
 	}
 
 	private void initGame() {
-		String playAgain;
+		String userResult;
 		do {
 			gameBoard.initFields();
 
@@ -63,10 +63,9 @@ public class GameController {
 
 			resetGame();
 
-			// TextBoundary. Sæt teksten ind i tekst boundary.
-			playAgain = GUI.getUserButtonPressed("Do you want to play again?", "Yes", "No");
+			userResult = GUI.getUserButtonPressed(textBoundary.buttonMessage, textBoundary.buttonConfirmMessage, textBoundary.buttonDeclineMessage);
 
-		} while (playAgain.equals("Yes"));
+		} while (userResult.equals(textBoundary.buttonConfirmMessage));
 
 		System.exit(0);
 	}

@@ -36,7 +36,7 @@ public class TextBoundary {
 		return sb.toString();
 	}
 
-	public String showThrowMessage(Player player, int roll1, int roll2, boolean showFieldText) {
+	public String throwMessage(Player player, int roll1, int roll2, boolean showFieldText) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(player.getName() + " rolling!\n\n");
 		sb.append(player.getName() + " got " + roll1 + " and " + roll2 + "!\n\n");

@@ -74,11 +74,12 @@ public class GameController {
 
 		} while (userResult.equals(textBoundary.buttonConfirmMessage));
 
+		System.exit(0);
 	}
 
 	private void playGame(Player firstPlayer, Player lastPlayer) {
 
-		while (true) { /* Revise this */
+		while (true) {
 			if (!playTurn(firstPlayer))
 				break;
 
@@ -95,7 +96,7 @@ public class GameController {
 		int roll2 = die2.roll();
 
 		GUI.setDice(roll1, roll2);
-		GUI.showMessage(textBoundary.showThrowMessage(player, roll1, roll2, false));
+		GUI.showMessage(textBoundary.throwMessage(player, roll1, roll2, false));
 		return roll1 + roll2;
 	}
 
@@ -108,7 +109,7 @@ public class GameController {
 		gameBoard.placePlayer(player, (roll1 + roll2));
 		GUI.removeCar(1, player.getName());
 
-		GUI.showMessage(textBoundary.showThrowMessage(player, roll1, roll2, true));
+		GUI.showMessage(textBoundary.throwMessage(player, roll1, roll2, true));
 
 		player.addCoins(gameBoard.getFieldEffect(roll1, roll2));
 
@@ -119,6 +120,7 @@ public class GameController {
 
 		if (roll1 + roll2 == 10) {
 			GUI.showMessage(textBoundary.extraTurnMessage(player));
+			GUI.removeCar((roll1 + roll2), player.getName());
 			playTurn(player);
 		}
 		return true;

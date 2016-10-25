@@ -13,8 +13,8 @@ import desktop_resources.GUI;
 public class Player {
 
 	private String name;
-	private Account acc;
-	private TextBoundary textBoundary;
+	private final Account acc;
+	private final TextBoundary textBoundary;
 
 	public Player(String name) {
 		this.name = name;

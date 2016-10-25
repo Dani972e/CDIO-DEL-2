@@ -12,19 +12,19 @@ import java.awt.Color;
 
 public class Field {
 
-	private Color bgColor;
-	private Color fgColor;
-	private String title;
-	private String subText;
-	private String desc;
-	private int coinEffect;
+	private final Color bgColor;
+	private final Color fgColor;
+	private final String title;
+	private final String subText;
+	private final String description;
+	private final int coinEffect;
 
-	public Field(Color bgColor, Color fgColor, String title, String subText, String desc, int coinEffect) {
+	public Field(Color bgColor, Color fgColor, String title, String subText, String description, int coinEffect) {
 		this.bgColor = bgColor;
 		this.fgColor = fgColor;
 		this.title = title;
 		this.subText = subText;
-		this.desc = desc;
+		this.description = description;
 		this.coinEffect = coinEffect;
 	}
 
@@ -44,8 +44,8 @@ public class Field {
 		return subText;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
 	public int getCoinEffect() {

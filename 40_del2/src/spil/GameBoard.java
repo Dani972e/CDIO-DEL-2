@@ -17,7 +17,7 @@ import desktop_resources.GUI;
 
 public class GameBoard {
 
-	private TextBoundary textController = new TextBoundary();
+	private final TextBoundary textController = new TextBoundary();
 
 	private final spil.Field[] fields = {
 			new spil.Field(new Color(0x46B50A), new Color(0xFFFFFF), textController.fieldText[1][0], textController.fieldText[1][1],
@@ -47,27 +47,27 @@ public class GameBoard {
 			new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLUE).setTitle(textController.fieldText[0][0])
 					.setSubText(textController.fieldText[0][1]).setDescription(textController.fieldText[0][2]).build(),
 			new Street.Builder().setBgColor(fields[0].getBgColor()).setFgColor(fields[0].getFgColor()).setTitle(fields[0].getTitle())
-					.setSubText(fields[0].getSubText()).setDescription(fields[0].getDesc()).build(),
+					.setSubText(fields[0].getSubText()).setDescription(fields[0].getDescription()).build(),
 			new Street.Builder().setBgColor(fields[1].getBgColor()).setFgColor(fields[1].getFgColor()).setTitle(fields[1].getTitle())
-					.setSubText(fields[1].getSubText()).setDescription(fields[1].getDesc()).build(),
+					.setSubText(fields[1].getSubText()).setDescription(fields[1].getDescription()).build(),
 			new Street.Builder().setBgColor(fields[2].getBgColor()).setFgColor(fields[2].getFgColor()).setTitle(fields[2].getTitle())
-					.setSubText(fields[2].getSubText()).setDescription(fields[2].getDesc()).build(),
+					.setSubText(fields[2].getSubText()).setDescription(fields[2].getDescription()).build(),
 			new Street.Builder().setBgColor(fields[3].getBgColor()).setFgColor(fields[3].getFgColor()).setTitle(fields[3].getTitle())
-					.setSubText(fields[3].getSubText()).setDescription(fields[3].getDesc()).build(),
+					.setSubText(fields[3].getSubText()).setDescription(fields[3].getDescription()).build(),
 			new Street.Builder().setBgColor(fields[4].getBgColor()).setFgColor(fields[4].getFgColor()).setTitle(fields[4].getTitle())
-					.setSubText(fields[4].getSubText()).setDescription(fields[4].getDesc()).build(),
+					.setSubText(fields[4].getSubText()).setDescription(fields[4].getDescription()).build(),
 			new Street.Builder().setBgColor(fields[5].getBgColor()).setFgColor(fields[5].getFgColor()).setTitle(fields[5].getTitle())
-					.setSubText(fields[5].getSubText()).setDescription(fields[5].getDesc()).build(),
+					.setSubText(fields[5].getSubText()).setDescription(fields[5].getDescription()).build(),
 			new Street.Builder().setBgColor(fields[6].getBgColor()).setFgColor(fields[6].getFgColor()).setTitle(fields[6].getTitle())
-					.setSubText(fields[6].getSubText()).setDescription(fields[6].getDesc()).build(),
+					.setSubText(fields[6].getSubText()).setDescription(fields[6].getDescription()).build(),
 			new Street.Builder().setBgColor(fields[7].getBgColor()).setFgColor(fields[7].getFgColor()).setTitle(fields[7].getTitle())
-					.setSubText(fields[7].getSubText()).setDescription(fields[7].getDesc()).build(),
+					.setSubText(fields[7].getSubText()).setDescription(fields[7].getDescription()).build(),
 			new Street.Builder().setBgColor(fields[8].getBgColor()).setFgColor(fields[8].getFgColor()).setTitle(fields[8].getTitle())
-					.setSubText(fields[8].getSubText()).setDescription(fields[8].getDesc()).build(),
+					.setSubText(fields[8].getSubText()).setDescription(fields[8].getDescription()).build(),
 			new Street.Builder().setBgColor(fields[9].getBgColor()).setFgColor(fields[9].getFgColor()).setTitle(fields[9].getTitle())
-					.setSubText(fields[9].getSubText()).setDescription(fields[9].getDesc()).build(),
+					.setSubText(fields[9].getSubText()).setDescription(fields[9].getDescription()).build(),
 			new Street.Builder().setBgColor(fields[10].getBgColor()).setFgColor(fields[10].getFgColor()).setTitle(fields[10].getTitle())
-					.setSubText(fields[10].getSubText()).setDescription(fields[10].getDesc()).build() };
+					.setSubText(fields[10].getSubText()).setDescription(fields[10].getDescription()).build() };
 
 	private final Car[] playerCars = {
 			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0x000000)).secondaryColor(new Color(0xFF0010)).build(),
@@ -107,6 +107,7 @@ public class GameBoard {
 		GUI.setBalance(player.getName(), player.getCoins());
 	}
 
+	/* Revise this. Not working as intended. */
 	private Car getRandomCar() {
 		int index = (int) ((Math.random() * playerCars.length));
 		return playerCars[index];

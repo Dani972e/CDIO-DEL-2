@@ -14,7 +14,7 @@ public class Die {
 	 * Indkapslede klasse variabler, "fields."
 	 * 
 	 * @param MAX_FACE_VALUE Maximumsværdi for faceValue.
-	 * @param faceValue      Den side terningen ligger på efter et kast. [1;6]
+	 * @param faceValue      
 	 */
 	private int maxFaceValue = 6;
 	private int faceValue = 1;

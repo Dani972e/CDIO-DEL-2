@@ -14,7 +14,7 @@ public class Account {
 	private final int DEFAULT_COIN_AMOUNT;
 	private final int MIN_COIN_AMOUNT;
 	private int coins;
-	
+
 	public Account(int maxCoinAmount, int defaultCoinAmount, int minCoinAmount) {
 		this.MAX_COIN_AMOUNT = maxCoinAmount;
 		this.DEFAULT_COIN_AMOUNT = defaultCoinAmount;
@@ -30,10 +30,6 @@ public class Account {
 		coins = DEFAULT_COIN_AMOUNT;
 	}
 
-	public int getCoins() {
-		return coins;
-	}
-
 	public boolean isFull() {
 		if (coins >= MAX_COIN_AMOUNT) {
 			return true;
@@ -46,6 +42,10 @@ public class Account {
 			return true;
 		}
 		return false;
+	}
+
+	public int getCoins() {
+		return coins;
 	}
 
 }

@@ -12,20 +12,22 @@ import desktop_resources.GUI;
 
 public class GameController {
 
-	private Player player1;
-	private Player player2;
+	private final Player player1;
+	private final Player player2;
 
-	private Die die1;
-	private Die die2;
+	private final Die die1;
+	private final Die die2;
 
-	private GameBoard gameBoard;
-	private TextBoundary textBoundary;
+	private final GameBoard gameBoard;
+	private final TextBoundary textBoundary;
 
 	public GameController() {
 		player1 = new Player("Player 1");
 		player2 = new Player("Player 2");
+
 		die1 = new Die(6);
 		die2 = new Die(6);
+
 		gameBoard = new GameBoard();
 		textBoundary = new TextBoundary();
 
@@ -34,19 +36,20 @@ public class GameController {
 
 	private void initGame() {
 		String userResult;
+
+		gameBoard.initFields();
+
+		gameBoard.addPlayer(player1);
+		gameBoard.addPlayer(player2);
+
+		GUI.showMessage(textBoundary.welcomeMessage);
+		GUI.showMessage(textBoundary.introMessage());
+
+		resetGame();
+
 		do {
-			gameBoard.initFields();
-
-			gameBoard.addPlayer(player1);
-			gameBoard.addPlayer(player2);
-
-			GUI.showMessage(textBoundary.welcomeMessage);
-			GUI.showMessage(textBoundary.introMessage());
-
 			int player1Roll;
 			int player2Roll;
-
-			resetGame();
 
 			do {
 				player1Roll = throwDice(player1);
@@ -67,14 +70,11 @@ public class GameController {
 
 		} while (userResult.equals(textBoundary.buttonConfirmMessage));
 
-		System.exit(0);
 	}
 
 	private void playGame(Player firstPlayer, Player lastPlayer) {
 
-		/* Revise this */
-		while (true) {
-
+		while (true) { /* Revise this */
 			if (!playTurn(firstPlayer))
 				break;
 
@@ -91,7 +91,7 @@ public class GameController {
 		int roll2 = die2.roll();
 
 		GUI.setDice(roll1, roll2);
-		GUI.showMessage(textBoundary.getDiceResult(player, roll1, roll2, false));
+		GUI.showMessage(textBoundary.showThrowMessage(player, roll1, roll2, false));
 		return roll1 + roll2;
 	}
 
@@ -99,14 +99,12 @@ public class GameController {
 		int roll1 = die1.roll();
 		int roll2 = die2.roll();
 
-		GUI.showMessage(textBoundary.rollMessage(player));
-
 		GUI.setDice(roll1, roll2);
 
 		gameBoard.placePlayer(player, (roll1 + roll2));
 		GUI.removeCar(1, player.getName());
 
-		GUI.showMessage(textBoundary.getDiceResult(player, roll1, roll2, true));
+		GUI.showMessage(textBoundary.showThrowMessage(player, roll1, roll2, true));
 
 		player.addCoins(gameBoard.getFieldEffect(roll1, roll2));
 

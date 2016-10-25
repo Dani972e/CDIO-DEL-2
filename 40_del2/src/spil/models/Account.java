@@ -1,4 +1,4 @@
-package spil;
+package spil.models;
 
 /**
  * @author Daniel Larsen (s151641)

@@ -1,6 +1,10 @@
-package spil;
+package spil.controller;
 
 import desktop_resources.GUI;
+import spil.boundary.TextBoundary;
+import spil.models.Die;
+import spil.models.GameBoard;
+import spil.models.Player;
 
 /**
  * @author Daniel Larsen (s151641)

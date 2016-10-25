@@ -1,4 +1,4 @@
-package spil;
+package spil.models;
 
 import java.awt.Color;
 
@@ -6,6 +6,7 @@ import desktop_codebehind.Car;
 import desktop_fields.Field;
 import desktop_fields.Street;
 import desktop_resources.GUI;
+import spil.boundary.TextBoundary;
 
 /**
  * @author Daniel Larsen (s151641)
@@ -19,28 +20,28 @@ public class GameBoard {
 
 	private final TextBoundary textController = new TextBoundary();
 
-	private final spil.Field[] fields = {
-			new spil.Field(new Color(0x46B50A), new Color(0xFFFFFF), textController.fieldText[1][0], textController.fieldText[1][1],
+	private final spil.models.Field[] fields = {
+			new spil.models.Field(new Color(0x46B50A), new Color(0xFFFFFF), textController.fieldText[1][0], textController.fieldText[1][1],
 					textController.fieldText[1][2], 250),
-			new spil.Field(new Color(0xBA8F71), new Color(0x000000), textController.fieldText[2][0], textController.fieldText[2][1],
+			new spil.models.Field(new Color(0xBA8F71), new Color(0x000000), textController.fieldText[2][0], textController.fieldText[2][1],
 					textController.fieldText[2][2], -100),
-			new spil.Field(new Color(0xAF0EA7), new Color(0x68DBFF), textController.fieldText[3][0], textController.fieldText[3][1],
+			new spil.models.Field(new Color(0xAF0EA7), new Color(0x68DBFF), textController.fieldText[3][0], textController.fieldText[3][1],
 					textController.fieldText[3][2], 100),
-			new spil.Field(new Color(0x89BEFF), new Color(0x000000), textController.fieldText[4][0], textController.fieldText[4][1],
+			new spil.models.Field(new Color(0x89BEFF), new Color(0x000000), textController.fieldText[4][0], textController.fieldText[4][1],
 					textController.fieldText[4][2], -20),
-			new spil.Field(new Color(0xF4E242), new Color(0x1000FF), textController.fieldText[5][0], textController.fieldText[5][1],
+			new spil.models.Field(new Color(0xF4E242), new Color(0x1000FF), textController.fieldText[5][0], textController.fieldText[5][1],
 					textController.fieldText[5][2], 180),
-			new spil.Field(new Color(0xFFF6B7), new Color(0x00B5AF), textController.fieldText[6][0], textController.fieldText[6][1],
+			new spil.models.Field(new Color(0xFFF6B7), new Color(0x00B5AF), textController.fieldText[6][0], textController.fieldText[6][1],
 					textController.fieldText[6][2], 0),
-			new spil.Field(new Color(0x877E79), new Color(0x820707), textController.fieldText[7][0], textController.fieldText[7][1],
+			new spil.models.Field(new Color(0x877E79), new Color(0x820707), textController.fieldText[7][0], textController.fieldText[7][1],
 					textController.fieldText[7][2], -70),
-			new spil.Field(new Color(0xFF9900), new Color(0x155B00), textController.fieldText[8][0], textController.fieldText[8][1],
+			new spil.models.Field(new Color(0xFF9900), new Color(0x155B00), textController.fieldText[8][0], textController.fieldText[8][1],
 					textController.fieldText[8][2], 60),
-			new spil.Field(new Color(0xE2E2E2), new Color(0xE00000), textController.fieldText[9][0], textController.fieldText[9][1],
+			new spil.models.Field(new Color(0xE2E2E2), new Color(0xE00000), textController.fieldText[9][0], textController.fieldText[9][1],
 					textController.fieldText[9][2], -80),
-			new spil.Field(new Color(0xC61300), new Color(0xFF7575), textController.fieldText[10][0], textController.fieldText[10][1],
+			new spil.models.Field(new Color(0xC61300), new Color(0xFF7575), textController.fieldText[10][0], textController.fieldText[10][1],
 					textController.fieldText[10][2], -50),
-			new spil.Field(new Color(0xFFD700), new Color(0xCC7000), textController.fieldText[11][0], textController.fieldText[11][1],
+			new spil.models.Field(new Color(0xFFD700), new Color(0xCC7000), textController.fieldText[11][0], textController.fieldText[11][1],
 					textController.fieldText[11][2], 650), };
 
 	private final Field[] guiFields = {

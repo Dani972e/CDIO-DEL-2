@@ -1,6 +1,7 @@
-package spil;
+package spil.models;
 
 import desktop_resources.GUI;
+import spil.boundary.TextBoundary;
 
 /**
  * @author Daniel Larsen (s151641)

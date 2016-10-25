@@ -1,4 +1,6 @@
-package spil;
+package spil.main;
+
+import spil.controller.GameController;
 
 /**
  * @author Daniel Larsen (s151641)

@@ -1,4 +1,4 @@
-package spil;
+package spil.models;
 
 import java.awt.Color;
 

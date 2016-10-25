@@ -1,4 +1,6 @@
-package spil;
+package spil.boundary;
+
+import spil.models.Player;
 
 /**
  * @author Daniel Larsen (s151641)

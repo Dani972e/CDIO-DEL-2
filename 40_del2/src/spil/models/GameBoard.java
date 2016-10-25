@@ -13,7 +13,7 @@ import spil.boundary.TextBoundary;
  * @author Daniel Anusic (s155005)
  * @author Peter El-Habr (s165202)
  * @author Loui Southwick (s161788)
- * @version 1.0
+ * @version 1.1
  */
 
 public class GameBoard {
@@ -77,7 +77,6 @@ public class GameBoard {
 			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0xFA4039)).secondaryColor(new Color(0xF023E1)).build(),
 			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0xABC423)).secondaryColor(new Color(0xAB0FA0)).build(), };
 
-	/* Is this OK? */
 	private final boolean[] carTaken = { false, false, false, false, false };
 
 	public void initFields() {
@@ -111,7 +110,6 @@ public class GameBoard {
 		GUI.setBalance(player.getName(), player.getCoins());
 	}
 
-	/* Revise this. Not working as intended. */
 	private Car getRandomCar() {
 		int index = (int) ((Math.random() * playerCars.length));
 

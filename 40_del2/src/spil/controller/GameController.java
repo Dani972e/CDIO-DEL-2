@@ -11,7 +11,7 @@ import spil.models.Player;
  * @author Daniel Anusic (s155005)
  * @author Peter El-Habr (s165202)
  * @author Loui Southwick (s161788)
- * @version 1.0
+ * @version 1.1
  */
 
 public class GameController {

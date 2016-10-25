@@ -1,10 +1,18 @@
-package JUnit_TestCase;
+package test;
 
 import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+/**
+ * @author Daniel Larsen (s151641)
+ * @author Daniel Anusic (s155005)
+ * @author Peter El-Habr (s165202)
+ * @author Loui Southwick (s161788)
+ * @version 1.1
+ */
 
 public class JUnit {
 

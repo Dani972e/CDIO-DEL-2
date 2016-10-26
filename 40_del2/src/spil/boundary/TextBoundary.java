@@ -34,7 +34,7 @@ public class TextBoundary {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Two players will face each other and they will start out by rolling two dice.\n\n");
 		sb.append("The player that rolls the highest number, will start the first round of the game.\n\n");
-		sb.append("Good Luck!\n\n");
+		sb.append("Player 1 will start out by rolling the dice\n\n");
 		return sb.toString();
 	}
 

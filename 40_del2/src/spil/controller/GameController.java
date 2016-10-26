@@ -98,7 +98,7 @@ public class GameController {
 		int roll2 = die2.roll();
 
 		GUI.setDice(roll1, roll2);
-		GUI.showMessage(textBoundary.throwMessage(player, roll1, roll2, false));
+		GUI.showMessage(textBoundary.rollMessage(player, roll1, roll2, false));
 		return roll1 + roll2;
 	}
 
@@ -111,8 +111,7 @@ public class GameController {
 		gameBoard.placePlayer(player, (roll1 + roll2));
 		GUI.removeCar(1, player.getName());
 
-		GUI.showMessage(textBoundary.throwMessage(player, roll1, roll2, true));
-
+		GUI.showMessage(textBoundary.rollMessage(player, roll1, roll2, true));
 		player.addCoins(gameBoard.getFieldEffect(roll1, roll2));
 
 		gameBoard.updatePlayer(player);

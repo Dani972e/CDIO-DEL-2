@@ -93,9 +93,9 @@ public class GameBoard {
 
 	public void resetPlayers(Player... playerArray) {
 		if (playerArray.length != 0) {
-			for (int i = 0, n = playerArray.length; i < n; i++) {
-				GUI.removeAllCars(playerArray[i].getName());
-				placePlayer(playerArray[i], 1);
+			for (Player p : playerArray) {
+				GUI.removeAllCars(p.getName());
+				placePlayer(p, 1);
 			}
 		}
 	}

@@ -121,7 +121,6 @@ public class GameController {
 			return false;
 
 		if (roll1 + roll2 == 10) {
-			GUI.showMessage(textBoundary.extraTurnMessage(player));
 			GUI.removeCar((roll1 + roll2), player.getName());
 			playTurn(player);
 		}

@@ -18,12 +18,13 @@ public class TextBoundary {
 			{ "5", "Cold Desert", "You accidentally drop 20 coins in the desert." },
 			{ "6", "Walled City", "It's your lucky day, 180 extra coins magically appear in your pocket." },
 			{ "7", "Monastery", "It's time for some praying." }, { "8", "Black Cave", "You got robbed by trolls and lost 70 coins." },
-			{ "9", "Huts in the mountain", "You find 60 coins in the hut." }, { "10", "The Werewall", "While being chased by a werewolf, you drop 80 coins." },
+			{ "9", "Huts in the mountain", "You find 60 coins in the hut." },
+			{ "10", "The Werewall", "While being chased by a werewolf, you drop 80 coins, but you got an extra turn!" },
 			{ "11", "The Pit", "You got knocked unconscious and lost 50 coins." }, { "12", "Gold Mine", "You find a mine full of gold, worth 650 coins." }, };
 
 	public final String gameTitle = "Treasure Hunt";
 	public final String welcomeMessage = "Welcome to the game \"" + gameTitle + "\"!\n\n\n\n\n\n";
-	public final String roundMessage = "The round is finished!\n\n\n\n\n\n";
+	public final String roundMessage = "The round is finished!\n\n\n\n";
 
 	public final String buttonMessage = "Do you want to play again?\n\n\n\n\n";
 	public final String buttonConfirmMessage = "Yes";
@@ -33,13 +34,13 @@ public class TextBoundary {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Two players will face each other and they will start out by rolling two dice.\n\n");
 		sb.append("The player that rolls the highest number, will start the first round of the game.\n\n");
-		sb.append("Good Luck!\n");
+		sb.append("Good Luck!\n\n");
 		return sb.toString();
 	}
 
 	public String throwMessage(Player player, int roll1, int roll2, boolean showFieldText) {
 		StringBuilder sb = new StringBuilder();
-		sb.append(player.getName() + " rolled " + roll1 + " and " + roll2 + "\n\n");
+		sb.append(player.getName() + " rolled " + roll1 + " and " + roll2 + "!\n\n");
 		if (showFieldText) {
 			sb.append(player.getName() + " lands on " + fieldText[roll1 + roll2 - 1][1] + "!\n\n");
 			sb.append("\"" + fieldText[(roll1 + roll2) - 1][2] + "\"");
@@ -48,7 +49,7 @@ public class TextBoundary {
 	}
 
 	public String startMessage(Player player) {
-		return "Congratulations, " + player.getName() + " you will start the round!\n\n\n\n\n\n";
+		return "Congratulations, " + player.getName() + " you will start the round!\n\n\n\n";
 	}
 
 	public String winMessage(Player player) {
@@ -57,10 +58,6 @@ public class TextBoundary {
 
 	public String lossMessage(Player player) {
 		return "Too bad, " + player.getName() + " you lost.\n\n\n\n\n\n";
-	}
-
-	public String extraTurnMessage(Player player) {
-		return player.getName() + " but you got an extra turn!\n\n\n\n\n\n";
 	}
 
 }

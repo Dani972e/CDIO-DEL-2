@@ -25,6 +25,10 @@ public class TextBoundary {
 	public final String gameTitle = "Treasure Hunt";
 	public final String welcomeMessage = "Welcome to the game \"" + gameTitle + "\"!\n\n\n\n\n\n";
 	public final String roundMessage = "The round is finished!\n\n\n\n";
+	public final String player2InfoMessage = "Player 2, please click \"OK\" to roll.";
+
+	public final String playerName1 = "Player 1";
+	public final String playerName2 = "Player 2";
 
 	public final String buttonMessage = "Do you want to play again?\n\n\n\n\n";
 	public final String buttonConfirmMessage = "Yes";

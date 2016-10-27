@@ -26,14 +26,14 @@ public class GameController {
 	private final TextBoundary textBoundary;
 
 	public GameController() {
-		player1 = new Player("Player 1");
-		player2 = new Player("Player 2");
-
 		die1 = new Die(6);
 		die2 = new Die(6);
 
 		gameBoard = new GameBoard();
 		textBoundary = new TextBoundary();
+
+		player1 = new Player(textBoundary.playerName1);
+		player2 = new Player(textBoundary.playerName2);
 
 		initGame();
 	}
@@ -54,10 +54,12 @@ public class GameController {
 		do {
 			int player1Roll;
 			int player2Roll;
+			int turnCount = 1;
 
 			do {
-				player1Roll = throwDice(player1);
-				player2Roll = throwDice(player2);
+				player1Roll = throwDice(player1, turnCount);
+				turnCount++;
+				player2Roll = throwDice(player2, turnCount);
 
 				if (player1Roll > player2Roll) {
 					GUI.showMessage(textBoundary.startMessage(player1));
@@ -93,12 +95,18 @@ public class GameController {
 
 	}
 
-	private int throwDice(Player player) {
+	private int throwDice(Player player, int turnCount) {
 		int roll1 = die1.roll();
 		int roll2 = die2.roll();
 
 		GUI.setDice(roll1, roll2);
-		GUI.showMessage(textBoundary.rollMessage(player, roll1, roll2, false));
+
+		if (player.getName().equals(textBoundary.playerName1) && turnCount == 1) {
+			GUI.showMessage(textBoundary.rollMessage(player, roll1, roll2, false) + textBoundary.player2InfoMessage);
+		} else {
+			GUI.showMessage(textBoundary.rollMessage(player, roll1, roll2, false));
+		}
+
 		return roll1 + roll2;
 	}
 

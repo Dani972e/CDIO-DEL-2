@@ -14,7 +14,7 @@ public class Die {
 	 * Indkapslede klasse variabler, "fields."
 	 * 
 	 * @param MAX_FACE_VALUE Maximumsværdi for faceValue.
-	 * @param faceValue      
+	 * @param faceValue      Det er den side terningen lander på efter hvert kast.   
 	 */
 	private int maxFaceValue = 6;
 	private int faceValue = 1;
@@ -30,7 +30,7 @@ public class Die {
 	}
 
 	/**
-	 * Giver faceValue en tilfældig værdi i intervallet [1;6]
+	 * Giver faceValue en tilfældig værdi i intervallet [1;maxFaceValue]
 	 * Bruger getFaceValue() metoden til at returnere faceValue.
 	 * 
 	 * @return getFaceValue()
@@ -47,7 +47,7 @@ public class Die {
 	 * Værdien af variablen bliver ikke tjekket, da 
 	 * roll() metoden er den eneste vej til at manipulere
 	 * værdien af variable faceValue, hvilket kun er i det ønskede
-	 * interval, [1;6].
+	 * interval, [1;maxFaceValue]
 	 * 
 	 * @return faceValue
 	 */

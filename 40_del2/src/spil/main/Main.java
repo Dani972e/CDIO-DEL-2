@@ -12,6 +12,13 @@ import spil.controller.GameController;
 
 public class Main {
 
+	/**
+	 * Main metode for programmet.
+	 * 
+	 * Det første der sker i programmet, er at
+	 * det bliver lavet et nyt instans af GameController
+	 * klassen.
+	 */
 	public static void main(String[] args) {
 		new GameController();
 	}

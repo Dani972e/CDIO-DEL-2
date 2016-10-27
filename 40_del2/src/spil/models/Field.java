@@ -12,6 +12,16 @@ import java.awt.Color;
 
 public class Field {
 
+	/**
+	 * Indkapslede klasse variabler, "fields."
+	 * 
+	 * @param bgColor     Baggrunds farve for feltet.
+	 * @param fgColor     Forgrunds farve for feltet.
+	 * @param title       Title for feltet.
+	 * @param subText     Undertekst for feltet.
+	 * @param description Beskrivelse af feltet.
+	 * @param coinEffect  Mønt-effekten for det givne felt.
+	 */
 	private final Color bgColor;
 	private final Color fgColor;
 	private final String title;
@@ -19,6 +29,10 @@ public class Field {
 	private final String description;
 	private final int coinEffect;
 
+	/**
+	 * Constructor for klassen Field, som har 6 forskellige variable i parameterlisten.
+	 * Den giver start værdier til klassens variable.
+	 */
 	public Field(Color bgColor, Color fgColor, String title, String subText, String description, int coinEffect) {
 		this.bgColor = bgColor;
 		this.fgColor = fgColor;
@@ -28,6 +42,9 @@ public class Field {
 		this.coinEffect = coinEffect;
 	}
 
+	/**
+	 * Getter metoder for alle klassens variable.
+	 */
 	public Color getBgColor() {
 		return bgColor;
 	}

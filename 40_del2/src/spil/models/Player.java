@@ -13,16 +13,32 @@ import spil.boundary.TextBoundary;
 
 public class Player {
 
+	/**
+	 * Indkapslede klasse variabler, "fields."
+	 * 
+	 * @param name          Navnet på spilleren.
+	 * @param acc           Spillerens bank konto.
+	 * @param textBoundary  textBoundary objekt for klassen.
+	 */
 	private String name;
 	private final Account acc;
 	private final TextBoundary textBoundary;
 
+	/**
+	 * Constructor for klassen Player med parameter name.
+	 * Constructoren instantiere acc objektet samt textBoundary objektet, og sætter 
+	 * den globale variable name til at være lig med name parameteren.
+	 */
 	public Player(String name) {
 		this.name = name;
 		acc = new Account(3000, 1000, 0);
 		textBoundary = new TextBoundary();
 	}
 
+	/**
+	 * Wrapper metode for acc objektets isFull() metode.
+	 * Hvis spillerens konto er fuld, har spilleren vundet.
+	 */
 	public boolean hasWon() {
 		if (acc.isFull()) {
 			GUI.showMessage(textBoundary.winMessage(this));
@@ -31,6 +47,10 @@ public class Player {
 		return false;
 	}
 
+	/**
+	 * Wrapper metode for acc objektets isEmpty() metode.
+	 * Hvis spillerens konto er tom, har spilleren tabt.
+	 */
 	public boolean hasLost() {
 		if (acc.isEmpty()) {
 			GUI.showMessage(textBoundary.lossMessage(this));
@@ -39,18 +59,35 @@ public class Player {
 		return false;
 	}
 
+	/**
+	 * Wrapper metode for acc objektets addCoins() metode.
+	 * Ligger amount til spillerens.
+	 */
 	public void addCoins(int amount) {
 		acc.addCoins(amount);
 	}
 
+	/**
+	 * Wrapper metode for acc objektets reset() metode.
+	 */
 	public void resetAccount() {
-		acc.resetAccount();
+		acc.reset();
 	}
 
+	/**
+	 * Getter metode for klasse variable name.
+	 * 
+	 * @return name Spillerens navn.
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Wrapper og getter metode for spillerens pengebeholdning.
+	 * 
+	 * @return acc.getCoins() Spillerens pengebeholdning.
+	 */
 	public int getCoins() {
 		return acc.getCoins();
 	}

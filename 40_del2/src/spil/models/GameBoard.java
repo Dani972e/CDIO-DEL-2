@@ -18,8 +18,15 @@ import spil.boundary.TextBoundary;
 
 public class GameBoard {
 
+	/**
+	 * Indkapslet TextBoundary objekt.
+	 */
 	private final TextBoundary textController = new TextBoundary();
 
+	/**
+	 * Indkapslet Fields array, som indeholder alle de 
+	 * forskellige værdier til spillets felter, som er de ikke grafiske felter.
+	 */
 	private final spil.models.Field[] fields = {
 			new spil.models.Field(new Color(0x46B50A), new Color(0xFFFFFF), textController.fieldText[1][0], textController.fieldText[1][1],
 					textController.fieldText[1][2], 250),
@@ -44,6 +51,10 @@ public class GameBoard {
 			new spil.models.Field(new Color(0xFFD700), new Color(0xCC7000), textController.fieldText[11][0], textController.fieldText[11][1],
 					textController.fieldText[11][2], 650), };
 
+	/**
+	 * Indkapslet Field array fra GUI API'et, som
+	 * er de grafiske felter.
+	 */
 	private final Field[] guiFields = {
 			new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLUE).setTitle(textController.fieldText[0][0])
 					.setSubText(textController.fieldText[0][1]).setDescription(textController.fieldText[0][2]).build(),
@@ -70,6 +81,11 @@ public class GameBoard {
 			new Street.Builder().setBgColor(fields[10].getBgColor()).setFgColor(fields[10].getFgColor()).setTitle(fields[10].getTitle())
 					.setSubText(fields[10].getSubText()).setDescription(fields[10].getDescription()).build() };
 
+	/**
+	 * Indkapslet Car array.
+	 * playerCars arrayet indeholder en række
+	 * forskellige bil objekter der kan blive brugt i spillet.
+	 */
 	private final Car[] playerCars = {
 			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0x000000)).secondaryColor(new Color(0xFF0010)).build(),
 			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0x0400FF)).secondaryColor(new Color(0xFF00E1)).build(),
@@ -77,20 +93,43 @@ public class GameBoard {
 			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0xFA4039)).secondaryColor(new Color(0xF023E1)).build(),
 			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0xABC423)).secondaryColor(new Color(0xAB0FA0)).build(), };
 
+	/**
+	 * Indkapslet boolean array.
+	 * Arrayet indeholder information om hvorvidt
+	 * en bil i det ovenstående array er blevet taget af en player,
+	 * da begge spillere ikke skal have den samme bil.
+	 */
 	private final boolean[] carTaken = { false, false, false, false, false };
 
+	/**
+	 * Metode der initialisere 
+	 * de grafiske felter.
+	 */
 	public void initFields() {
 		GUI.create(guiFields);
 	}
 
+	/**
+	 * Metode der initialisere 
+	 * de grafiske felter.
+	 */
 	public void addPlayer(Player player) {
 		GUI.addPlayer(player.getName(), player.getCoins(), getRandomCar());
 	}
 
+	/**
+	 * Metode der placere en bil 
+	 * på et felt.
+	 */
 	public void placePlayer(Player player, int fieldNum) {
 		GUI.setCar(fieldNum, player.getName());
 	}
 
+	/**
+	 * Metode der placerer alle spillernes biler
+	 * på start feltet, og sletter spillernes biler
+	 * fra alle andre felter.
+	 */
 	public void resetPlayers(Player... playerArray) {
 		if (playerArray.length != 0) {
 			for (Player p : playerArray) {
@@ -100,16 +139,30 @@ public class GameBoard {
 		}
 	}
 
+	/**
+	 * Metode der returnere mønt-effektion for 
+	 * det givne felt på pladsen roll1 + roll2.
+	 * 
+	 * @return fields[fieldIndex].getCoinEffect();
+	 */
 	public int getFieldEffect(int roll1, int roll2) {
 		int offset = 2;
 		int fieldIndex = (roll1 + roll2) - offset;
 		return fields[fieldIndex].getCoinEffect();
 	}
 
+	/**
+	 * Metode som updateren Player objektets 
+	 * pengebeholdning på GUI.
+	 */
 	public void updatePlayer(Player player) {
 		GUI.setBalance(player.getName(), player.getCoins());
 	}
 
+	/**
+	 * Metode der returnere en bil hvis den ikke allerede er blevet
+	 * taget af en anden spiller.
+	 */
 	private Car getRandomCar() {
 		int index = (int) ((Math.random() * playerCars.length));
 

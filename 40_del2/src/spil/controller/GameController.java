@@ -11,11 +11,25 @@ import spil.models.Player;
  * @author Daniel Anusic (s155005)
  * @author Peter El-Habr (s165202)
  * @author Loui Southwick (s161788)
- * @version 1.1
+ * @version 1.2
  */
 
+/*
+ * GameController er den klasse, der har ansvaret for at spillet
+ * fungerer som det skal.
+ * GameController har instanser af næsten alle klasser
+ * der findes i spillet, og er derved den primære klasse
+ * og controller i programmet.
+ */
 public class GameController {
 
+	/**
+	 * Indkapslede klasse variabler, "fields."
+	 * 
+	 * Der findes to Player objekter i klassen, da 
+	 * dette spil er et spil specifikt mellem to spillere, der kaster med
+	 * præcis to terninger hver.
+	 */
 	private final Player player1;
 	private final Player player2;
 
@@ -25,6 +39,13 @@ public class GameController {
 	private final GameBoard gameBoard;
 	private final TextBoundary textBoundary;
 
+	/**
+	 * Constructor for klassen, GameController.
+	 * 
+	 * Constructoren for GameController bliver
+	 * primært brugt til at instantiere de ovenstående
+	 * klasse variable, og derefter initialiseres spillet.
+	 */
 	public GameController() {
 		die1 = new Die(6);
 		die2 = new Die(6);
@@ -38,6 +59,14 @@ public class GameController {
 		initGame();
 	}
 
+	/**
+	 * initGame() metode, "Initialise Game" er den metode, 
+	 * der først bliver kaldt for at starte spillet.
+	 * 
+	 * Den sørger for, at bruge gameBoard objektet til at 
+	 * opsætte felterne og spillerne på den grafiske brugergrænseflade,
+	 * og dertil finder ud af hvem der skal starte i den første runde.
+	 */
 	private void initGame() {
 		String userResult;
 
@@ -79,8 +108,15 @@ public class GameController {
 		System.exit(0);
 	}
 
+	/**
+	 * playGame() metoden er den metode, der sørger for spillets centrale
+	 * funktionalitet. Spillerne bliver ved med at kaste terningerne,
+	 * indtil en af dem enten har vundet ellet tabt.
+	 * 
+	 * @param firstPlayer  Den spiller der skal starte runden.
+	 * @param lastPlayer   Den spiller der skal slå som nummer to.
+	 */
 	private void playGame(Player firstPlayer, Player lastPlayer) {
-
 		while (true) {
 			if (!playTurn(firstPlayer))
 				break;
@@ -89,12 +125,18 @@ public class GameController {
 				break;
 
 			gameBoard.resetPlayers(firstPlayer, lastPlayer);
-
 			GUI.showMessage(textBoundary.roundMessage);
 		}
-
 	}
 
+	/**
+	 * Denne metode sørger for, at kaste med to terninger for player objektet, til den første del af spillet.
+	 * Derfor bliver der ikke udskrevet noget angående spillets felter.
+	 * 
+	 * @param player          Spilleren der kaster med de to terninger.
+	 * @param turnCount       Variable der indeholder antallet af kast indtil nu.
+	 * @return roll1 + roll2  Resultatet af kastet.
+	 */
 	private int throwDice(Player player, int turnCount) {
 		int roll1 = die1.roll();
 		int roll2 = die2.roll();
@@ -106,10 +148,20 @@ public class GameController {
 		} else {
 			GUI.showMessage(textBoundary.rollMessage(player, roll1, roll2, false));
 		}
-
 		return roll1 + roll2;
 	}
 
+	/**
+	 * Denne metode sørger for, at kaste med to terninger for player objektet, 
+	 * efter den første del af spillet er ovre.
+	 * Her bliver der udskrevet hvilket felt spilleren lander på, og dets effekt på 
+	 * spilleren.
+	 * 
+	 * @param player          Spilleren der kaster med de to terninger.
+	 * @return                true bliver returneret hvis spilleren ikke har vundet
+	 *                        eller tabt, hvis spilleren enten har vundet eller tabt, bliver
+	 *                        false returneret.
+	 */
 	private boolean playTurn(Player player) {
 		int roll1 = die1.roll();
 		int roll2 = die2.roll();
@@ -134,6 +186,13 @@ public class GameController {
 		return true;
 	}
 
+	/**
+	 * resetGame() metoden sørger for at 
+	 * nulstille nogle specifikke ting i spillet.
+	 * 
+	 * Begge af spillernes kontoer bliver nulstillet, samt deres
+	 * position på den grafiske brugergrænseflade.
+	 */
 	private void resetGame() {
 		gameBoard.resetPlayers(player1, player2);
 		player1.resetAccount();

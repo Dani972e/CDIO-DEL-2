@@ -8,7 +8,7 @@ import spil.boundary.TextBoundary;
  * @author Daniel Anusic (s155005)
  * @author Peter El-Habr (s165202)
  * @author Loui Southwick (s161788)
- * @version 1.1
+ * @version 1.2
  */
 
 public class Player {
@@ -26,6 +26,7 @@ public class Player {
 
 	/**
 	 * Constructor for klassen Player med parameter name.
+	 *
 	 * Constructoren instantiere acc objektet samt textBoundary objektet, og sætter 
 	 * den globale variable name til at være lig med name parameteren.
 	 */
@@ -61,7 +62,7 @@ public class Player {
 
 	/**
 	 * Wrapper metode for acc objektets addCoins() metode.
-	 * Ligger amount til spillerens.
+	 * Ligger amount til kontoens coins værdi.
 	 */
 	public void addCoins(int amount) {
 		acc.addCoins(amount);
@@ -69,6 +70,7 @@ public class Player {
 
 	/**
 	 * Wrapper metode for acc objektets reset() metode.
+	 * Kontoens pengebeholdning bliver nulstillet.
 	 */
 	public void resetAccount() {
 		acc.reset();
@@ -86,7 +88,7 @@ public class Player {
 	/**
 	 * Wrapper og getter metode for spillerens pengebeholdning.
 	 * 
-	 * @return acc.getCoins() Spillerens pengebeholdning.
+	 * @return acc.getCoins() Spillerens pengebeholdning returneres.
 	 */
 	public int getCoins() {
 		return acc.getCoins();

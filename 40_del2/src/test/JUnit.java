@@ -1,6 +1,6 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import org.junit.After;
 import org.junit.Before;
@@ -11,7 +11,7 @@ import org.junit.Test;
  * @author Daniel Anusic (s155005)
  * @author Peter El-Habr (s165202)
  * @author Loui Southwick (s161788)
- * @version 1.1
+ * @version 1.2
  */
 
 public class JUnit {
@@ -26,7 +26,7 @@ public class JUnit {
 
 	@Test
 	public final void test() {
-		fail("Not yet implemented"); // TODO
+		fail("Not yet implemented");
 	}
 
 }

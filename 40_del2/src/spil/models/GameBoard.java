@@ -13,7 +13,7 @@ import spil.boundary.TextBoundary;
  * @author Daniel Anusic (s155005)
  * @author Peter El-Habr (s165202)
  * @author Loui Southwick (s161788)
- * @version 1.1
+ * @version 1.2
  */
 
 public class GameBoard {
@@ -25,7 +25,9 @@ public class GameBoard {
 
 	/**
 	 * Indkapslet Fields array, som indeholder alle de 
-	 * forskellige værdier til spillets felter, som er de ikke grafiske felter.
+	 * forskellige værdier til spillets felter. Dette er det
+	 * "ikke-grafiske" felter. De holder blot værdierne
+	 * for de grafiske felter.
 	 */
 	private final spil.models.Field[] fields = {
 			new spil.models.Field(new Color(0x46B50A), new Color(0xFFFFFF), textController.fieldText[1][0], textController.fieldText[1][1],
@@ -52,8 +54,8 @@ public class GameBoard {
 					textController.fieldText[11][2], 650), };
 
 	/**
-	 * Indkapslet Field array fra GUI API'et, som
-	 * er de grafiske felter.
+	 * Indkapslet Field array fra GUI API'et. Field arrayets 
+	 * variabler bliver brugt her. Dette er de grafiske felter.
 	 */
 	private final Field[] guiFields = {
 			new Street.Builder().setBgColor(Color.WHITE).setFgColor(Color.BLUE).setTitle(textController.fieldText[0][0])
@@ -84,7 +86,8 @@ public class GameBoard {
 	/**
 	 * Indkapslet Car array.
 	 * playerCars arrayet indeholder en række
-	 * forskellige bil objekter der kan blive brugt i spillet.
+	 * forskellige bil objekter der kan blive brugt i spillet
+	 * til at repræsentere en spiller.
 	 */
 	private final Car[] playerCars = {
 			new Car.Builder().patternDiagonalDualColor().typeRacecar().primaryColor(new Color(0x000000)).secondaryColor(new Color(0xFF0010)).build(),
@@ -96,37 +99,34 @@ public class GameBoard {
 	/**
 	 * Indkapslet boolean array.
 	 * Arrayet indeholder information om hvorvidt
-	 * en bil i det ovenstående array er blevet taget af en player,
-	 * da begge spillere ikke skal have den samme bil.
+	 * en bil i playerCars arrayet er blevet taget af en player,
+	 * da begge spillere ikke skal have den samme bil i spillet.
 	 */
 	private final boolean[] carTaken = { false, false, false, false, false };
 
 	/**
-	 * Metode der initialisere 
-	 * de grafiske felter.
+	 * Metode der initialisere de grafiske felter.
 	 */
 	public void initFields() {
 		GUI.create(guiFields);
 	}
 
 	/**
-	 * Metode der initialisere 
-	 * de grafiske felter.
+	 * Metode der tilføjer en spiller til den grafiske brugergrænseflade.
 	 */
 	public void addPlayer(Player player) {
 		GUI.addPlayer(player.getName(), player.getCoins(), getRandomCar());
 	}
 
 	/**
-	 * Metode der placere en bil 
-	 * på et felt.
+	 * Metode der placerer en bil på et felt.
 	 */
 	public void placePlayer(Player player, int fieldNum) {
 		GUI.setCar(fieldNum, player.getName());
 	}
 
 	/**
-	 * Metode der placerer alle spillernes biler
+	 * Metode der placerer spillernes biler
 	 * på start feltet, og sletter spillernes biler
 	 * fra alle andre felter.
 	 */
@@ -140,10 +140,10 @@ public class GameBoard {
 	}
 
 	/**
-	 * Metode der returnere mønt-effektion for 
-	 * det givne felt på pladsen roll1 + roll2.
+	 * Metode der returnere mønt-effekten for 
+	 * det givne felt på pladsen [roll1 + roll2].
 	 * 
-	 * @return fields[fieldIndex].getCoinEffect();
+	 * @return fields[fieldIndex].getCoinEffect() Mønt-effekten for feltet på fieldIndex.
 	 */
 	public int getFieldEffect(int roll1, int roll2) {
 		int offset = 2;
@@ -152,25 +152,22 @@ public class GameBoard {
 	}
 
 	/**
-	 * Metode som updateren Player objektets 
-	 * pengebeholdning på GUI.
+	 * Metode som updatere Player objektets pengebeholdning på den grafiske brugergrænseflade.
 	 */
 	public void updatePlayer(Player player) {
 		GUI.setBalance(player.getName(), player.getCoins());
 	}
 
 	/**
-	 * Metode der returnere en bil hvis den ikke allerede er blevet
+	 * Metode der returnere en tilfældig bil hvis den ikke allerede er blevet
 	 * taget af en anden spiller.
 	 */
 	private Car getRandomCar() {
 		int index = (int) ((Math.random() * playerCars.length));
-
 		if (!carTaken[index]) {
 			carTaken[index] = true;
 			return playerCars[index];
 		}
-
 		return getRandomCar();
 	}
 

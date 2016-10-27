@@ -5,7 +5,7 @@ package spil.models;
  * @author Daniel Anusic (s155005)
  * @author Peter El-Habr (s165202)
  * @author Loui Southwick (s161788)
- * @version 1.1
+ * @version 1.2
  */
 
 public class Account {
@@ -50,7 +50,7 @@ public class Account {
 	}
 
 	/**
-	 * Metode der returnerer en boolean om coins er større eller lig med MAX_COIN_AMOUNT.
+	 * Metode isFull() der returnerer en boolean om coins er større eller lig med MAX_COIN_AMOUNT.
 	 * 
 	 * @return true  Hvis coins er større eller lig med MAX_COIN_AMOUNT.
 	 * @return false Hvis coins ikke er større eller lig med MAX_COIN_AMOUNT.
@@ -63,7 +63,7 @@ public class Account {
 	}
 
 	/**
-	 * Metode der returnerer en boolean om coins er mindre eller lig med MIN_COIN_AMOUNT. 
+	 * Metode isEmpty() der returnerer en boolean om coins er mindre eller lig med MIN_COIN_AMOUNT. 
 	 * 
 	 * @return true  Hvis coins er mindre eller lig med MIN_COIN_AMOUNT.
 	 * @return false Hvis coins ikke er mindre eller lig med MIN_COIN_AMOUNT. 

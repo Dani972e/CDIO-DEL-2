@@ -5,7 +5,7 @@ package spil.models;
  * @author Daniel Anusic (s155005)
  * @author Peter El-Habr (s165202)
  * @author Loui Southwick (s161788)
- * @version 1.1
+ * @version 1.2
  */
 
 public class Die {
@@ -13,8 +13,8 @@ public class Die {
 	/**
 	 * Indkapslede klasse variabler, "fields."
 	 * 
-	 * @param MAX_FACE_VALUE Maximumsværdi for faceValue.
-	 * @param faceValue      Det er den side terningen lander på efter hvert kast.   
+	 * @param MAX_FACE_VALUE  Maximumsværdi for faceValue.
+	 * @param faceValue       Det er den side terningen lander på efter et kast.   
 	 */
 	private int maxFaceValue = 6;
 	private int faceValue = 1;
@@ -30,10 +30,10 @@ public class Die {
 	}
 
 	/**
-	 * Giver faceValue en tilfældig værdi i intervallet [1;maxFaceValue]
+	 * Giver faceValue en tilfældig værdi i intervallet [1;maxFaceValue].
 	 * Bruger getFaceValue() metoden til at returnere faceValue.
 	 * 
-	 * @return getFaceValue()
+	 * @return getFaceValue() Returnere variable faceValue.
 	 */
 	public int roll() {
 		faceValue = (int) (Math.random() * maxFaceValue) + 1;
@@ -49,7 +49,7 @@ public class Die {
 	 * værdien af variable faceValue, hvilket kun er i det ønskede
 	 * interval, [1;maxFaceValue]
 	 * 
-	 * @return faceValue
+	 * @return faceValue Terningens side værdi.
 	 */
 	public int getFaceValue() {
 		return faceValue;

@@ -28,7 +28,7 @@ public class GameController {
 	 * 
 	 * Der findes to Player objekter i klassen, da 
 	 * dette spil er et spil specifikt mellem to spillere, der kaster med
-	 * præcis to terninger hver.
+	 * præcis to terninger hver shscds.
 	 */
 	private final Player player1;
 	private final Player player2;

@@ -16,11 +16,11 @@ import spil.models.Player;
  * @version 1.2
  */
 
-public class JUnit {
+public class JUnitPlayer {
 
 	private static Player player1;
 	private static Player player2;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		player1 = new Player("Player 1");
@@ -67,6 +67,60 @@ public class JUnit {
 		player1.addCoins(Integer.MIN_VALUE - 1);
 
 		assertEquals(expected, player1.getCoins());
+	}
+
+	@Test // Positive test
+	public final void testHasLost0() {
+		boolean expected = true;
+
+		player1.addCoins(-player1.getCoins());
+
+		assertEquals(expected, player1.hasLost());
+	}
+
+	@Test // Positive test
+	public final void testHasLostNegative() {
+		boolean expected = true;
+
+		player1.addCoins(-10000);
+
+		assertEquals(expected, player1.hasLost());
+	}
+
+	@Test // Positive test
+	public final void testHasLostFalse() {
+		boolean expected = false;
+
+		player1.addCoins(10000);
+
+		assertEquals(expected, player1.hasLost());
+	}
+	
+	@Test // Positive test
+	public final void testHasWon() {
+		boolean expected = true;
+
+		player1.addCoins(10000);
+
+		assertEquals(expected, player1.hasWon());
+	}
+
+	@Test // Positive test
+	public final void testHasWon1() {
+		boolean expected = true;
+
+		player1.addCoins(2000);
+
+		assertEquals(expected, player1.hasWon());
+	}
+
+	@Test // Positive test
+	public final void testHasWon2() {
+		boolean expected = false;
+
+		player1.addCoins(1999);
+
+		assertEquals(expected, player1.hasWon());
 	}
 	
 }

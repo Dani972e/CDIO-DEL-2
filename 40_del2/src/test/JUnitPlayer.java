@@ -18,23 +18,20 @@ import spil.models.Player;
 
 public class JUnitPlayer {
 
-	private static Player player1;
-	private static Player player2;
+	private Player player1;
 
 	@Before
 	public void setUp() throws Exception {
 		player1 = new Player("Player 1");
-		player2 = new Player("Player 2");
 	}
 
 	@After
 	public void tearDown() throws Exception {
 		player1 = null;
-		player2 = null;
 	}
 
-	@Test
-	public final void testAddCoins() {
+	@Test // Positive Test
+	public void testAddCoins() {
 		int expected = 1500;
 
 		player1.addCoins(500);
@@ -48,8 +45,8 @@ public class JUnitPlayer {
 		assertEquals(expected, player1.getCoins());
 	}
 
-	@Test
-	public final void testAddCoinsOverflow() {
+	@Test // Negative Test
+	public void testAddCoinsOverflow() {
 
 		int expected = 2147483647;
 
@@ -59,8 +56,8 @@ public class JUnitPlayer {
 		assertEquals(expected, player1.getCoins());
 	}
 
-	@Test
-	public final void testAddCoinsUnderflow() {
+	@Test // Negative Test
+	public void testAddCoinsUnderflow() {
 		int expected = -2147483648;
 
 		player1.addCoins(-player1.getCoins());
@@ -69,8 +66,8 @@ public class JUnitPlayer {
 		assertEquals(expected, player1.getCoins());
 	}
 
-	@Test // Positive test
-	public final void testHasLost0() {
+	@Test // Positive Test
+	public void testHasLost0() {
 		boolean expected = true;
 
 		player1.addCoins(-player1.getCoins());
@@ -78,8 +75,8 @@ public class JUnitPlayer {
 		assertEquals(expected, player1.hasLost());
 	}
 
-	@Test // Positive test
-	public final void testHasLostNegative() {
+	@Test // Positive Test
+	public void testHasLostNegative() {
 		boolean expected = true;
 
 		player1.addCoins(-10000);
@@ -87,8 +84,8 @@ public class JUnitPlayer {
 		assertEquals(expected, player1.hasLost());
 	}
 
-	@Test // Positive test
-	public final void testHasLostFalse() {
+	@Test // Positive Test
+	public void testHasLostFalse() {
 		boolean expected = false;
 
 		player1.addCoins(10000);
@@ -96,8 +93,8 @@ public class JUnitPlayer {
 		assertEquals(expected, player1.hasLost());
 	}
 	
-	@Test // Positive test
-	public final void testHasWon() {
+	@Test // Positive Test
+	public void testHasWon0() {
 		boolean expected = true;
 
 		player1.addCoins(10000);
@@ -105,8 +102,8 @@ public class JUnitPlayer {
 		assertEquals(expected, player1.hasWon());
 	}
 
-	@Test // Positive test
-	public final void testHasWon1() {
+	@Test // Positive Test
+	public void testHasWon1() {
 		boolean expected = true;
 
 		player1.addCoins(2000);
@@ -114,13 +111,44 @@ public class JUnitPlayer {
 		assertEquals(expected, player1.hasWon());
 	}
 
-	@Test // Positive test
-	public final void testHasWon2() {
+	@Test // Positive Test
+	public void testHasWon2() {
 		boolean expected = false;
 
 		player1.addCoins(1999);
 
 		assertEquals(expected, player1.hasWon());
+	}
+	
+	/*
+	 * Test addCoins() in cooperation with resetAccount().
+	 */
+	@Test // Positive Test
+	public void testResetAccount() {
+		int add1 = 6824;
+		int startAmount = 1000;
+		
+		player1.addCoins(add1);
+		
+		int expected = add1 + startAmount;
+		int actual = player1.getCoins();
+		
+		assertEquals(expected, actual);
+		
+		int add2 = 220;
+		player1.addCoins(add2);
+		
+		expected = add1 + add2 + startAmount;
+		actual = player1.getCoins();
+		
+		assertEquals(expected, actual);
+		
+		player1.resetAccount();
+		
+		expected = startAmount;
+		actual = player1.getCoins();
+		
+		assertEquals(expected, actual);
 	}
 	
 }

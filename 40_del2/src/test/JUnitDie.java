@@ -26,7 +26,7 @@ public class JUnitDie {
 	public void testRoll() {
 		die1.setMaxFaceValue(10);
 
-		int iterations = 10000;
+		int iterations = 1000000;
 
 		int[] rollArray = new int[11];
 

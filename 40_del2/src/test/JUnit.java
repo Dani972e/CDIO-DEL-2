@@ -59,7 +59,7 @@ public class JUnit {
 	public final void testOverflow(){
 		int expected = 2147483647;
 		
-		
+	
 		player1.addCoins(-player1.getCoins());
 		player1.addCoins(Integer.MAX_VALUE+1);
 		
